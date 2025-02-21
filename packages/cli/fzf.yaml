@@ -1,0 +1,25 @@
+name: fzf
+version: 0.60.1
+description: A command-line fuzzy finder
+homepage: https://github.com/junegunn/fzf
+license: MIT
+maintainer: lvim-tech
+updated_at: 2025-02-21T14:18:33Z
+tags:
+  - cli
+  - search
+  - fuzzy-finder
+install:
+  source:
+    type: git
+    url: https://github.com/junegunn/fzf.git
+    ref: 0.60.1
+  steps:
+    - git clone --depth 1 --branch 0.60.1 https://github.com/junegunn/fzf.git .
+    - ./install --all
+  binaries:
+    - bin/fzf
+    - bin/fzf-tmux
+  configs:
+    - .fzf.bash
+    - .fzf.zsh
