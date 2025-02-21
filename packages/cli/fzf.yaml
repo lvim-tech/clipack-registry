@@ -15,7 +15,7 @@ install:
     url: https://github.com/junegunn/fzf.git
     ref: v0.60.1
   steps:
-    - git clone --depth 1 --branch 0.60.1 https://github.com/junegunn/fzf.git .
+    - git clone --depth 1 --branch v0.60.1 https://github.com/junegunn/fzf.git .
     - ./install --all
   binaries:
     - bin/fzf
