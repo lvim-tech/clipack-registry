@@ -23,3 +23,11 @@ install:
   configs:
     - .fzf.bash
     - .fzf.zsh
+  man:
+    - man/man1/fzf.1
+    - man/man1/fzf-tmux.1
+  additional-config:
+    - filename: additional_config.sh
+      content: |
+        # Additional configuration for fzf
+        export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'   - .fzf.zsh
