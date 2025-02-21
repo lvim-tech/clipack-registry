@@ -27,7 +27,119 @@ install:
     - man/man1/fzf.1
     - man/man1/fzf-tmux.1
   additional-config:
-    - filename: additional_config.sh
+    - filename: config.sh
       content: |
-        # Additional configuration for fzf
-        export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'   - .fzf.zsh
+        export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --color=ansi \
+        -g '!.cache' -g '!.git' -g '!.github' -g '!.svn' -g '!.hg' -g '!CVS' \
+        -g '!.bzr' -g '!vendor' -g '!node_modules'"
+        export FZF_DEFAULT_OPTS="
+        --pointer '' \
+        --marker '' \
+        --preview='bat --style=rule,header,header-filename,header-filesize,\
+        changes,numbers,snip --color=ansi {1} 2>/dev/null' \
+        --preview-window=noborder \
+        --border=none \
+        --separator='' \
+        --info=inline \
+        --prompt='Search  ' \
+        --bind ctrl-d:preview-down,ctrl-u:preview-up"
+    - filename: LvimDark.sh
+      content: |
+        export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+          --highlight-line \
+          --info=inline-right \
+          --ansi \
+          --layout=reverse \
+          --border=none \
+          --color=bg+:#272f34 \
+          --color=bg:#1c2125 \
+          --color=border:#6a804c \
+          --color=fg:#5e8888 \
+          --color=fg+:#5e8888 \
+          --color=gutter:#1c2125 \
+          --color=header:#ff9c2a \
+          --color=hl+:#e34a39 \
+          --color=hl:#4d6263 \
+          --color=marker:#b84e36 \
+          --color=pointer:#b84e36 \
+          --color=prompt:#8aa55f \
+          --color=query:#5e8888:regular \
+          --color=scrollbar:#6a804c \
+          --color=separator:#ff9c2a \
+          --color=spinner:#b84e36 \
+        "
+    - filename: LvimDarker.sh
+      content: |
+        export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+          --highlight-line \
+          --info=inline-right \
+          --ansi \
+          --layout=reverse \
+          --border=none \
+          --color=bg+:#232a2e \
+          --color=bg:#181c1f \
+          --color=border:#6a7f4b \
+          --color=fg:#5e8888 \
+          --color=gutter:#181c1f \
+          --color=header:#ff9c2a \
+          --color=hl+:#e34a39 \
+          --color=hl:#e34a39 \
+          --color=info:#4d6263 \
+          --color=marker:#b84e36 \
+          --color=pointer:#b84e36 \
+          --color=prompt:#8aa55f \
+          --color=query:#5e8888:regular \
+          --color=scrollbar:#6a7f4b \
+          --color=separator:#ff9c2a \
+          --color=spinner:#b84e36 \
+        "
+    - filename: LvimKanagawa.sh
+      content: |
+        export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+          --highlight-line \
+          --info=inline-right \
+          --ansi \
+          --layout=reverse \
+          --border=none \
+          --color=bg+:#23242a \
+          --color=bg:#1b1c21 \
+          --color=border:#5a6949 \
+          --color=fg:#54546d \
+          --color=gutter:#1b1c21 \
+          --color=header:#c99460 \
+          --color=hl+:#b24b4b \
+          --color=hl:#b24b4b \
+          --color=info:#51515b \
+          --color=marker:#c16d67 \
+          --color=pointer:#c16d67 \
+          --color=prompt:#6e8156 \
+          --color=query:#54546d:regular \
+          --color=scrollbar:#5a6949 \
+          --color=separator:#c99460 \
+          --color=spinner:#c16d67 \
+        "
+    - filename: LvimLight.sh
+      content: |
+        export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+          --highlight-line \
+          --info=inline-right \
+          --ansi \
+          --layout=reverse \
+          --border=none \
+          --color=bg+:#e7e7e7 \
+          --color=bg:#dfdfdf \
+          --color=border:#72805a \
+          --color=fg:#5e8888 \
+          --color=gutter:#dfdfdf \
+          --color=header:#a96400 \
+          --color=hl+:#c53f30 \
+          --color=hl:#c53f30 \
+          --color=info:#789698 \
+          --color=marker:#d15a3f \
+          --color=pointer:#d15a3f \
+          --color=prompt:#748c50 \
+          --color=query:#5e8888:regular \
+          --color=scrollbar:#72805a \
+          --color=separator:#a96400 \
+          --color=spinner:#d15a3f \
+        "
