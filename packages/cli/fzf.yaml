@@ -140,26 +140,43 @@ install:
           --color=separator:#a96400 \
           --color=spinner:#d15a3f \
         "
-preview_script: |
-  #!/usr/bin/env bash
-  input="$1"
+post-install:
+  scripts:
+    - filename: custom_script.sh
+      content: |
+        #!/usr/bin/env bash
+        export FZF_DEFAULT_COMMAND="rg --no-heading -H \
+        --smart-case --line-number --column --follow --color=always"
+    - filename: fzf_preview.sh
+      content: |
+        #!/usr/bin/env bash
+        # Скрипт за preview на FZF.
+        # Ако входът е път към файл, използва bat.
+        # Ако входът е ред от резултат на rg с формат "файл:ред:съдържание",
+        # извлича файла и реда и показва preview с highlight.
 
-  if [ -z "$input" ]; then
-      exit 0
-  fi
+        input="$1"
 
-  if [ -f "$input" ];then
-      bat --color=always "$input"
-      exit 0
-  fi
+        # Ако входът е празен, няма какво да се покаже.
+        if [ -z "$input" ];then
+            exit 0
+        fi
 
-  if [[ "$input" =~ ^([^:]+):([0-9]+):(.*)$ ]]; then
-      file="${BASH_REMATCH[1]}"
-      line="${BASH_REMATCH[2]}"
-      if [ -f "$file" ]; then
-          bat --color=always --highlight-line "$line" "$file"
-          exit 0
-      fi
-  fi
+        # Ако входът съществува като файл, използваме bat за preview
+        if [ -f "$input" ]; then
+            bat --color=always "$input"
+            exit 0
+        fi
 
-  echo "$input"
+        # Ако входът изглежда като резултат от rg (файл:ред:съдържание)
+        if [[ "$input" =~ ^([^:]+):([0-9]+):(.*)$ ]]; then
+            file="${BASH_REMATCH[1]}"
+            line="${BASH_REMATCH[2]}"
+            if [ -f "$file" ];then
+                bat --color=always --highlight-line "$line" "$file"
+                exit 0
+            fi
+        fi
+
+        # За всеки друг случай, показваме съдържанието както е.
+        echo "$input"
