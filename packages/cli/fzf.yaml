@@ -142,11 +142,6 @@ install:
         "
 post-install:
   scripts:
-    - filename: custom_script.sh
-      content: |
-        #!/usr/bin/env bash
-        export FZF_DEFAULT_COMMAND="rg --no-heading -H \
-        --smart-case --line-number --column --follow --color=always"
     - filename: fzf_preview.sh
       content: |
         #!/usr/bin/env bash
