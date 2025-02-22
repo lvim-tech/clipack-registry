@@ -175,7 +175,7 @@ post-install:
 
         # За всеки друг случай, показваме съдържанието както е.
         echo "$input"
-    - filename: fzf_preview2.sh
+    - filename: fzf_preview3.sh
       content: |
         #!/usr/bin/env bash
         # Скрипт за preview на FZF.
