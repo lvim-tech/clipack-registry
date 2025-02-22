@@ -18,7 +18,7 @@ install:
     - git clone --depth 1 --branch v0.60.1 https://github.com/junegunn/fzf.git .
     - ./install --all
     - echo "$PREVIEW_SCRIPT" > bin/fzf_preview.sh
-    - chmod +x bin/custom_script.sh bin/fzf_preview.sh
+    - chmod +x bin/fzf_preview.sh
   binaries:
     - bin/fzf
     - bin/fzf-tmux
