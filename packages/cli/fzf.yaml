@@ -3,7 +3,7 @@ version: v0.60.1
 description: A command-line fuzzy finder
 homepage: https://github.com/junegunn/fzf
 license: MIT
-maintainer: lvim-tech
+maintainer: junegunn
 updated_at: 2025-02-21T14:18:33Z
 tags:
   - cli
