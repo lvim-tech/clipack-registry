@@ -17,9 +17,12 @@ install:
   steps:
     - git clone --depth 1 --branch v0.60.1 https://github.com/junegunn/fzf.git .
     - ./install --all
+    - echo "$PREVIEW_SCRIPT" > bin/fzf_preview.sh
+    - chmod +x bin/custom_script.sh bin/fzf_preview.sh
   binaries:
     - bin/fzf
     - bin/fzf-tmux
+    - bin/fzf_preview.sh
   configs:
     - .fzf.bash
     - .fzf.zsh
@@ -35,7 +38,7 @@ install:
         export FZF_DEFAULT_OPTS="
         --pointer '' \
         --marker '' \
-        --preview='bat --style=rule,header,header-filename,header-filesize,\
+        --preview='bash fzf_preview.sh {}' \
         changes,numbers,snip --color=ansi {1} 2>/dev/null' \
         --preview-window=noborder \
         --border=none \
@@ -143,3 +146,26 @@ install:
           --color=separator:#a96400 \
           --color=spinner:#d15a3f \
         "
+preview_script: |
+  #!/usr/bin/env bash
+  input="$1"
+
+  if [ -z "$input" ]; then
+      exit 0
+  fi
+
+  if [ -f "$input" ];then
+      bat --color=always "$input"
+      exit 0
+  fi
+
+  if [[ "$input" =~ ^([^:]+):([0-9]+):(.*)$ ]]; then
+      file="${BASH_REMATCH[1]}"
+      line="${BASH_REMATCH[2]}"
+      if [ -f "$file" ]; then
+          bat --color=always --highlight-line "$line" "$file"
+          exit 0
+      fi
+  fi
+
+  echo "$input"
