@@ -20,9 +20,6 @@ install:
   binaries:
     - bin/fzf
     - bin/fzf-tmux
-  configs:
-    - .fzf.bash
-    - .fzf.zsh
   man:
     - man/man1/fzf.1
     - man/man1/fzf-tmux.1
