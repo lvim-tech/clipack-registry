@@ -16,7 +16,7 @@ install:
     ref: v0.60.1
   steps:
     - git clone --depth 1 --branch v0.60.1 https://github.com/junegunn/fzf.git .
-    - ./make
+    - go build -o bin/fzf
   binaries:
     - bin/fzf
     - bin/fzf-tmux
