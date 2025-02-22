@@ -175,3 +175,36 @@ post-install:
 
         # За всеки друг случай, показваме съдържанието както е.
         echo "$input"
+    - filename: fzf_preview2.sh
+      content: |
+        #!/usr/bin/env bash
+        # Скрипт за preview на FZF.
+        # Ако входът е път към файл, използва bat.
+        # Ако входът е ред от резултат на rg с формат "файл:ред:съдържание",
+        # извлича файла и реда и показва preview с highlight.
+
+        input="$1"
+
+        # Ако входът е празен, няма какво да се покаже.
+        if [ -z "$input" ];then
+            exit 0
+        fi
+
+        # Ако входът съществува като файл, използваме bat за preview
+        if [ -f "$input" ]; then
+            bat --color=always "$input"
+            exit 0
+        fi
+
+        # Ако входът изглежда като резултат от rg (файл:ред:съдържание)
+        if [[ "$input" =~ ^([^:]+):([0-9]+):(.*)$ ]]; then
+            file="${BASH_REMATCH[1]}"
+            line="${BASH_REMATCH[2]}"
+            if [ -f "$file" ];then
+                bat --color=always --highlight-line "$line" "$file"
+                exit 0
+            fi
+        fi
+
+        # За всеки друг случай, показваме съдържанието както е.
+        echo "$input"
