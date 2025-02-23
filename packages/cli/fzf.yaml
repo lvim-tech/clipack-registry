@@ -4,7 +4,7 @@ description: A command-line fuzzy finder
 homepage: https://github.com/junegunn/fzf
 license: MIT
 maintainer: junegunn
-updated_at: 2025-02-23T14:18:33Z
+updated_at: 2025-02-23T14:19:33Z
 tags:
   - cli
   - search
@@ -144,26 +144,64 @@ post-install:
   scripts:
     - filename: fzf_preview.sh
       content: |
-        #!/usr/bin/env bash
+        #!/bin/zsh
 
-        input="$1"
+        REVERSE="--reverse"
+        ICON_MENU=""
+        ICON_EXPLORER="󰙅"
+        ICON_SEARCH_DIRECTORIES_AND_FILES="󱋣"
+        ICON_SEARCH_DIRECTORIES="󰉋"
+        ICON_SEARCH_FILES="󰈔"
+        ICON_SEARCH_IN_FILES="󰈙"
+        ICON_POINTER=""
+        ICON_MARKER=""
+        ICON_PROMPT=""
+        ICON_SEPARATOR=""
 
-        if [ -z "$input" ];then
-            exit 0
-        fi
+        SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN="fd -H --color always"
+        SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN="fd --color always"
+        SEARCH_DIRECTORIES_WITH_HIDDEN="fd -H --color always --type d"
+        SEARCH_DIRECTORIES_WITHOUT_HIDDEN="fd --color always --type d"
+        SEARCH_FILES_WITH_HIDDEN="fd -H --color always --type f"
+        SEARCH_FILES_WITHOUT_HIDDEN="fd --color always --type f"
+        SEARCH_IN_FILES_WITH_HIDDEN="rg --no-heading -H --smart-case\
+        --line-number --column --hidden --follow --color=always"
+        SEARCH_IN_FILES_WITHOUT_HIDDEN="rg --no-heading -H --smart-case\
+        --line-number --column --follow --color=always"
 
-        if [ -f "$input" ]; then
-            bat --color=always "$input"
-            exit 0
-        fi
-
-        if [[ "$input" =~ ^([^:]+):([0-9]+):(.*)$ ]]; then
-            file="${BASH_REMATCH[1]}"
-            line="${BASH_REMATCH[2]}"
-            if [ -f "$file" ];then
-                bat --color=always --highlight-line "$line" "$file"
-                exit 0
+        PREVIEW_ENGINE='
+            VAL={..};
+            [ -f {2} ] && VAL={2};
+            [ -d {2} ] && VAL={2};
+            if [ -f "$VAL" ]; then
+                file -biz "$VAL" | grep ^text &>/dev/null &&\
+                bat --color=always --decorations=never "$VAL";
+            elif [ -d "$VAL" ]; then
+                eza --group --colour=always --icons=always\
+                --group-directories-first --classify --level 1 --oneline\
+                "$VAL" 2>/dev/null;
             fi
-        fi
+        '
 
-        echo "$input"
+        export FZF_DEFAULT_OPTS="
+            $REVERSE
+            --ansi
+            --multi
+            --sort
+            --tac
+            --header='$ICON_EXPLORER SEARCH FILES AND FOLDERS'
+            --prompt='  Browse $ICON_PROMPT '
+            --pointer='$ICON_POINTER'
+            --marker='$ICON_MARKER'
+            --preview='$PREVIEW_ENGINE'
+            --preview-window=up:60%:wrap:noborder
+            --border=none
+            --separator=''
+            --info=inline
+            --nth='..'
+            --bind 'tab:toggle+down'
+            --bind 'shift-tab:toggle+up'
+            --bind 'ctrl-d:preview-down'
+            --bind 'ctrl-u:preview-up'
+            --bind 'ctrl-c:abort'
+        "
