@@ -20,8 +20,9 @@ install:
   binaries:
     - target/release/eza
   man:
-    - man/eza.1
-    - man/eza.5
+    - man/eza.1.md
+    - man/eza_colors-explanation.5.md
+    - man/eza_colors.5.md
   additional-config: []
 post-install:
   scripts: []
