@@ -16,8 +16,7 @@ install:
     ref: main
   steps:
     - git clone --branch v0.20.22 --single-branch https://github.com/eza-community/eza.git .
-    - cd eza
-    - cargo install --path .
+    - cargo build --release
   binaries:
     - target/release/eza
   man:
