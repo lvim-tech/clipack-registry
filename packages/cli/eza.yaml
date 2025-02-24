@@ -1,0 +1,28 @@
+name: eza
+version: v0.20.22
+description: A modern replacement for ls.
+homepage: https://github.com/eza-community/eza
+license: MIT
+maintainer: eza-community
+updated_at: 2025-02-24T13:37:29Z
+tags:
+  - cli
+  - ls
+  - modern
+install:
+  source:
+    type: git
+    url: https://github.com/eza-community/eza.git
+    ref: main
+  steps:
+    - git clone --branch ${version} --single-branch https://github.com/eza-community/eza.git .
+    - cd eza
+    - cargo install --path .
+  binaries:
+    - target/release/eza
+  man:
+    - man/eza.1
+    - man/eza.5
+  additional-config: []
+post-install:
+  scripts: []
