@@ -26,20 +26,78 @@ install:
   additional-config:
     - filename: config.sh
       content: |
-        export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --color=ansi \
-        -g '!.cache' -g '!.git' -g '!.github' -g '!.svn' -g '!.hg' -g '!CVS' \
-        -g '!.bzr' -g '!vendor' -g '!node_modules'"
+        #!/bin/zsh
+
+        REVERSE="--reverse"
+        ICON_MENU=""
+        ICON_EXPLORER="󰙅"
+        ICON_SEARCH_DIRECTORIES_AND_FILES="󱋣"
+        ICON_SEARCH_DIRECTORIES="󰉋"
+        ICON_SEARCH_FILES="󰈔"
+        ICON_SEARCH_IN_FILES="󰈙"
+        ICON_POINTER=""
+        ICON_MARKER=""
+        ICON_PROMPT=""
+        ICON_SEPARATOR=""
+
+        SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN="fd -H --color always"
+        SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN="fd --color always"
+        SEARCH_DIRECTORIES_WITH_HIDDEN="fd -H --color always --type d"
+        SEARCH_DIRECTORIES_WITHOUT_HIDDEN="fd --color always --type d"
+        SEARCH_FILES_WITH_HIDDEN="fd -H --color always --type f"
+        SEARCH_FILES_WITHOUT_HIDDEN="fd --color always --type f"
+        SEARCH_IN_FILES_WITH_HIDDEN="rg --no-heading -H --smart-case --line-number --column --hidden --follow --color=always"
+        SEARCH_IN_FILES_WITHOUT_HIDDEN="rg --no-heading -H --smart-case --line-number --column --follow --color=always"
+
+        export FZF_DEFAULT_COMMAND="$SEARCH_FILES_WITHOUT_HIDDEN"
+
+        PREVIEW_ENGINE='
+            VAL={..}; 
+            [ -f {2} ] && VAL={2}; 
+            [ -d {2} ] && VAL={2}; 
+            if [ -f "$VAL" ]; then
+                file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
+            elif [ -d "$VAL" ]; then
+                eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline "$VAL" 2>/dev/null;
+            fi
+        '
+
         export FZF_DEFAULT_OPTS="
-        --pointer '' \
-        --marker '' \
-        --preview='bash fzf_preview.sh {}' \
-        changes,numbers,snip --color=ansi {1} 2>/dev/null' \
-        --preview-window=noborder \
-        --border=none \
-        --separator='' \
-        --info=inline \
-        --prompt='Search  ' \
-        --bind ctrl-d:preview-down,ctrl-u:preview-up"
+            $REVERSE
+            --ansi
+            --multi
+            --sort
+            --tac
+            --header='$ICON_EXPLORER SEARCH FILES AND FOLDERS'
+            --prompt='  Browse $ICON_PROMPT '
+            --pointer='$ICON_POINTER'
+            --marker='$ICON_MARKER'
+            --preview='$PREVIEW_ENGINE'
+            --preview-window=right:60%:wrap:noborder
+            --border=none
+            --separator=''
+            --info=inline
+            --nth='..'
+            --bind 'tab:toggle+down'
+            --bind 'shift-tab:toggle+up'
+            --bind 'ctrl-d:preview-down'
+            --bind 'ctrl-u:preview-up'
+            --bind 'ctrl-c:abort'
+            --bind 'alt-h:reload($SEARCH_FILES_WITH_HIDDEN)+change-preview($PREVIEW_ENGINE)'
+            --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'
+        "
+
+        fzf_search_files() {
+            #
+        }
+
+        fzf_search_folders() {
+            #
+        }
+
+        fzf_search_in_files() {
+            #
+        }
     - filename: LvimDark.sh
       content: |
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -139,69 +197,4 @@ install:
           --color=scrollbar:#72805a \
           --color=separator:#a96400 \
           --color=spinner:#d15a3f \
-        "
-post-install:
-  scripts:
-    - filename: fzf_preview.sh
-      content: |
-        #!/bin/zsh
-
-        REVERSE="--reverse"
-        ICON_MENU=""
-        ICON_EXPLORER="󰙅"
-        ICON_SEARCH_DIRECTORIES_AND_FILES="󱋣"
-        ICON_SEARCH_DIRECTORIES="󰉋"
-        ICON_SEARCH_FILES="󰈔"
-        ICON_SEARCH_IN_FILES="󰈙"
-        ICON_POINTER=""
-        ICON_MARKER=""
-        ICON_PROMPT=""
-        ICON_SEPARATOR=""
-
-        SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN="fd -H --color always"
-        SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN="fd --color always"
-        SEARCH_DIRECTORIES_WITH_HIDDEN="fd -H --color always --type d"
-        SEARCH_DIRECTORIES_WITHOUT_HIDDEN="fd --color always --type d"
-        SEARCH_FILES_WITH_HIDDEN="fd -H --color always --type f"
-        SEARCH_FILES_WITHOUT_HIDDEN="fd --color always --type f"
-        SEARCH_IN_FILES_WITH_HIDDEN="rg --no-heading -H --smart-case\
-        --line-number --column --hidden --follow --color=always"
-        SEARCH_IN_FILES_WITHOUT_HIDDEN="rg --no-heading -H --smart-case\
-        --line-number --column --follow --color=always"
-
-        PREVIEW_ENGINE='
-            VAL={..};
-            [ -f {2} ] && VAL={2};
-            [ -d {2} ] && VAL={2};
-            if [ -f "$VAL" ]; then
-                file -biz "$VAL" | grep ^text &>/dev/null &&\
-                bat --color=always --decorations=never "$VAL";
-            elif [ -d "$VAL" ]; then
-                eza --group --colour=always --icons=always\
-                --group-directories-first --classify --level 1 --oneline\
-                "$VAL" 2>/dev/null;
-            fi
-        '
-
-        export FZF_DEFAULT_OPTS="
-            $REVERSE
-            --ansi
-            --multi
-            --sort
-            --tac
-            --header='$ICON_EXPLORER SEARCH FILES AND FOLDERS'
-            --prompt='  Browse $ICON_PROMPT '
-            --pointer='$ICON_POINTER'
-            --marker='$ICON_MARKER'
-            --preview='$PREVIEW_ENGINE'
-            --preview-window=up:60%:wrap:noborder
-            --border=none
-            --separator=''
-            --info=inline
-            --nth='..'
-            --bind 'tab:toggle+down'
-            --bind 'shift-tab:toggle+up'
-            --bind 'ctrl-d:preview-down'
-            --bind 'ctrl-u:preview-up'
-            --bind 'ctrl-c:abort'
         "
