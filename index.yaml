@@ -1,2 +1,3 @@
 packages:
   - packages/cli/fzf.yaml
+  - packages/cli/eza.yaml
