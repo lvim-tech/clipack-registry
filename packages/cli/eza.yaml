@@ -17,12 +17,16 @@ install:
   steps:
     - git clone --branch v0.20.22 --single-branch https://github.com/eza-community/eza.git .
     - cargo build --release
+    - mkdir -p man/man1 man/man5
+    - pandoc man/eza.1.md -s -t man -o man/man1/eza.1
+    - pandoc man/eza_colors-explanation.5.md -s -t man -o man/man5/eza_colors-explanation.5
+    - pandoc man/eza_colors.5.md -s -t man -o man/man5/eza_colors.5
   binaries:
     - target/release/eza
   man:
-    - man/eza.1.md
-    - man/eza_colors-explanation.5.md
-    - man/eza_colors.5.md
+    - man/man1/eza.1
+    - man/man5/eza_colors-explanation.5
+    - man/man5/eza_colors.5
   additional-config: []
 post-install:
   scripts: []
