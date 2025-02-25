@@ -15,7 +15,7 @@ install:
     url: https://github.com/tmux/tmux.git
     ref: master
   steps:
-    - git clone --branch 3.5a --single-branch https://github.com/tmux/tmux.git .
+    - git clone --branch tmux-3.5a --single-branch https://github.com/tmux/tmux.git .
     - sh autogen.sh
     - ./configure
     - make
