@@ -28,7 +28,7 @@ install:
       content: |
         #!/bin/zsh
 
-        BASE_PATH=$(grep 'base:' config.yaml | sed 's/.*base: //')
+        BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
 
         if [ -z "$THEME" ]; then
             THEME="LvimDark"
