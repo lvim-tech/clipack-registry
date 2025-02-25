@@ -1,3 +1,4 @@
 packages:
   - packages/cli/fzf.yaml
   - packages/cli/eza.yaml
+  - packages/cli/vivid.yaml

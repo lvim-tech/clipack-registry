@@ -1,0 +1,29 @@
+name: vivid
+version: v0.10.1
+description: A themeable LS_COLORS generator with a rich filetype database.
+homepage: https://github.com/sharkdp/vivid
+license: MIT
+maintainer: sharkdp
+updated_at: 2025-02-24T13:45:00Z
+tags:
+  - cli
+  - ls
+  - colors
+  - themes
+install:
+  source:
+    type: git
+    url: https://github.com/sharkdp/vivid.git
+    ref: main
+  steps:
+    - git clone --branch v0.10.1 --single-branch https://github.com/sharkdp/vivid.git .
+    - cargo build --release
+    - mkdir -p man/man1
+    - pandoc doc/vivid.1.md -s -t man -o man/man1/vivid.1
+  binaries:
+    - target/release/vivid
+  man:
+    - man/man1/vivid.1
+  additional-config: []
+post-install:
+  scripts: []
