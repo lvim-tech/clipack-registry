@@ -18,12 +18,9 @@ install:
   steps:
     - git clone --branch v0.10.1 --single-branch https://github.com/sharkdp/vivid.git .
     - cargo build --release
-    - mkdir -p man/man1
-    - pandoc doc/vivid.1.md -s -t man -o man/man1/vivid.1
   binaries:
     - target/release/vivid
-  man:
-    - man/man1/vivid.1
+  man: []
   additional-config: []
 post-install:
   scripts: []
