@@ -25,3 +25,14 @@ install:
     - tmux
   man:
     - man/man1/tmux.1
+  additional-config:
+    - filename: config.sh
+      content: |
+        #!/bin/zsh
+
+        BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
+
+        alias tmux="tmux -f $BASE_PATH/configs/tmux/.tmux.conf"
+    - filename: .tmux.conf
+      content: |
+        #
