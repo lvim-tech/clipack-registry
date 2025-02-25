@@ -28,6 +28,12 @@ install:
       content: |
         #!/bin/zsh
 
+        BASE_PATH=$(grep 'base:' config.yaml | sed 's/.*base: //')
+
+        if [ -z "$THEME" ]; then
+            THEME="LvimDark"
+        fi
+
         REVERSE="--reverse"
         ICON_MENU=""
         ICON_EXPLORER="󰙅"
@@ -84,8 +90,9 @@ install:
             --bind 'ctrl-u:preview-up'
             --bind 'ctrl-c:abort'
             --bind 'alt-h:reload($SEARCH_FILES_WITH_HIDDEN)+change-preview($PREVIEW_ENGINE)'
-            --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'
-        "
+            --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'"
+
+        source "$BASE_PATH/configs/fzf/$THEME.sh"
 
         fzf_search_files() {
             #
@@ -121,8 +128,7 @@ install:
           --color=query:#5e8888:regular \
           --color=scrollbar:#6a804c \
           --color=separator:#ff9c2a \
-          --color=spinner:#b84e36 \
-        "
+          --color=spinner:#b84e36"
     - filename: LvimDarker.sh
       content: |
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -146,8 +152,7 @@ install:
           --color=query:#5e8888:regular \
           --color=scrollbar:#6a7f4b \
           --color=separator:#ff9c2a \
-          --color=spinner:#b84e36 \
-        "
+          --color=spinner:#b84e36"
     - filename: LvimKanagawa.sh
       content: |
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -171,8 +176,7 @@ install:
           --color=query:#54546d:regular \
           --color=scrollbar:#5a6949 \
           --color=separator:#c99460 \
-          --color=spinner:#c16d67 \
-        "
+          --color=spinner:#c16d67"
     - filename: LvimLight.sh
       content: |
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
@@ -196,5 +200,4 @@ install:
           --color=query:#5e8888:regular \
           --color=scrollbar:#72805a \
           --color=separator:#a96400 \
-          --color=spinner:#d15a3f \
-        "
+          --color=spinner:#d15a3f"

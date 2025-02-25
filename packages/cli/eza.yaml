@@ -27,6 +27,3 @@ install:
     - man/man1/eza.1
     - man/man5/eza_colors-explanation.5
     - man/man5/eza_colors.5
-  additional-config: []
-post-install:
-  scripts: []
