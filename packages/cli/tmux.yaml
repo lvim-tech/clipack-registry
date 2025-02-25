@@ -1,0 +1,27 @@
+name: tmux
+version: 3.5
+description: Terminal multiplexer for managing multiple terminal sessions.
+homepage: https://github.com/tmux/tmux
+license: ISC
+maintainer: tmux-community
+updated_at: 2025-02-25T00:00:00Z
+tags:
+  - cli
+  - terminal
+  - multiplexer
+install:
+  source:
+    type: git
+    url: https://github.com/tmux/tmux.git
+    ref: master
+  steps:
+    - git clone --branch 3.5 --single-branch https://github.com/tmux/tmux.git .
+    - sh autogen.sh
+    - ./configure
+    - make
+    - mkdir -p man/man1
+    - cp tmux.1 man/man1/
+  binaries:
+    - tmux
+  man:
+    - man/man1/tmux.1
