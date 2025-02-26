@@ -40,6 +40,9 @@ install:
         tmux source-file $BASE_PATH/configs/tmux/.tmux.conf
 
         alias tmux="tmux -f $BASE_PATH/configs/tmux/.tmux.conf"
+        alias tm="tmux attach -t SYSTEM || tmux new -s SYSTEM"
+        alias ta="tmux a -t SYSTEM"
+        alias tn="tmux new-session"
     - filename: .tmux.conf
       content: |
           # ==========================
