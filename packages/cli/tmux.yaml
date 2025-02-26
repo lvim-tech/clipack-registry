@@ -42,7 +42,6 @@ install:
         alias tmux="tmux -f $BASE_PATH/configs/tmux/.tmux.conf"
     - filename: .tmux.conf
       content: |
-        #!/usr/bin/env bash
           # ==========================
           # ===  General settings  ===
           # ==========================
@@ -234,7 +233,6 @@ install:
           run '~/.tmux/plugins/tpm/tpm'
     - filename: LvimDark.conf
       content: |
-        #!/usr/bin/env bash
         set -g mode-style "fg=#1c2125,bg=#ff9010"
 
         set -g message-style "fg=#1c7060,bg=#181d1f"
@@ -287,7 +285,6 @@ install:
         set -g @prefix_highlight_copy_mode_attr "fg=#e65e4f,bold,bg=#181d1f"
     - filename: LvimDarker.conf
       content: |
-        #!/usr/bin/env bash
         set -g mode-style "fg=#181c1f,bg=#ff9010"
 
         set -g message-style "fg=#1c7060,bg=#141819"
@@ -340,7 +337,6 @@ install:
         set -g @prefix_highlight_copy_mode_attr "fg=#e65e4f,bold,bg=#141819"
     - filename: LvimKanagawa.conf
       content: |
-        #!/usr/bin/env bash
         set -g mode-style "fg=#1b1c21,bg=#c68f58"
 
         set -g message-style "fg=#4b869b,bg=#17181c"
@@ -393,7 +389,6 @@ install:
         set -g @prefix_highlight_copy_mode_attr "fg=#b65252,bold,bg=#17181c"
     - filename: LvimLight.conf
       content: |
-        #!/usr/bin/env bash
         set -g mode-style "fg=#dfdfdf,bg=#b66400"
 
         set -g message-style "fg=#2a9b86,bg=#dadada"

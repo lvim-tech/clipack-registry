@@ -58,9 +58,9 @@ install:
         export FZF_DEFAULT_COMMAND="$SEARCH_FILES_WITHOUT_HIDDEN"
 
         PREVIEW_ENGINE='
-            VAL={..}; 
-            [ -f {2} ] && VAL={2}; 
-            [ -d {2} ] && VAL={2}; 
+            VAL={..};
+            [ -f {2} ] && VAL={2};
+            [ -d {2} ] && VAL={2};
             if [ -f "$VAL" ]; then
                 file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
             elif [ -d "$VAL" ]; then
@@ -107,6 +107,8 @@ install:
         }
     - filename: LvimDark.sh
       content: |
+        #!/usr/bin/env bash
+
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
           --highlight-line \
           --info=inline-right \
@@ -131,6 +133,8 @@ install:
           --color=spinner:#b84e36"
     - filename: LvimDarker.sh
       content: |
+        #!/usr/bin/env bash
+
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
           --highlight-line \
           --info=inline-right \
@@ -155,6 +159,8 @@ install:
           --color=spinner:#b84e36"
     - filename: LvimKanagawa.sh
       content: |
+        #!/usr/bin/env bash
+
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
           --highlight-line \
           --info=inline-right \
@@ -179,6 +185,8 @@ install:
           --color=spinner:#c16d67"
     - filename: LvimLight.sh
       content: |
+        #!/usr/bin/env bash
+
         export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
           --highlight-line \
           --info=inline-right \
