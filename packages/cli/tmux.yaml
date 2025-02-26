@@ -43,7 +43,7 @@ install:
     - filename: .tmux.conf
       content: |
         #!/usr/bin/env bash
-    - filename: LvimDark.yml
+    - filename: LvimDark.conf
       content: |
         #!/usr/bin/env bash
         set -g mode-style "fg=#1c2125,bg=#ff9010"
@@ -96,7 +96,7 @@ install:
         set -g @prefix_highlight_bg "#1c2125"
         set -g @prefix_highlight_show_copy_mode 'on'
         set -g @prefix_highlight_copy_mode_attr "fg=#e65e4f,bold,bg=#181d1f"
-    - filename: LvimDarker.yml
+    - filename: LvimDarker.conf
       content: |
         #!/usr/bin/env bash
         set -g mode-style "fg=#181c1f,bg=#ff9010"
@@ -149,7 +149,7 @@ install:
         set -g @prefix_highlight_bg "#181c1f"
         set -g @prefix_highlight_show_copy_mode 'on'
         set -g @prefix_highlight_copy_mode_attr "fg=#e65e4f,bold,bg=#141819"
-    - filename: LvimKanagawa.yml
+    - filename: LvimKanagawa.conf
       content: |
         #!/usr/bin/env bash
         set -g mode-style "fg=#1b1c21,bg=#c68f58"
@@ -202,7 +202,7 @@ install:
         set -g @prefix_highlight_bg "#1b1c21"
         set -g @prefix_highlight_show_copy_mode 'on'
         set -g @prefix_highlight_copy_mode_attr "fg=#b65252,bold,bg=#17181c"
-    - filename: LvimLight.yml
+    - filename: LvimLight.conf
       content: |
         #!/usr/bin/env bash
         set -g mode-style "fg=#dfdfdf,bg=#b66400"
