@@ -3,3 +3,4 @@ packages:
   - packages/cli/eza.yaml
   - packages/cli/tmux.yaml
   - packages/cli/vivid.yaml
+  - packages/cli/zoxide.yaml
