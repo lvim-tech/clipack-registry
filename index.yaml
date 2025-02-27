@@ -1,6 +1,6 @@
 packages:
-  - packages/cli/fzf.yaml
   - packages/cli/eza.yaml
+  - packages/cli/fzf.yaml
   - packages/cli/tmux.yaml
   - packages/cli/vivid.yaml
   - packages/cli/zoxide.yaml

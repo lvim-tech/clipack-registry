@@ -17,8 +17,6 @@ install:
   steps:
     - git clone --branch v0.9.7 --single-branch https://github.com/ajeetdsouza/zoxide.git .
     - cargo build --release
-    - mkdir -p man/man1
-    - cp target/release/man/* man/man1/
   binaries:
     - target/release/zoxide
   man:
