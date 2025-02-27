@@ -110,10 +110,10 @@ install:
         unbind-key -T root MouseDown3Pane
 
         # Edit configuration and reload
-        bind C-e new-window -n '~/clipack/configs/tmux/.tmux.conf' "sh -c '\${EDITOR:-vim} ~/clipack/configs/tmux/.tmux.conf && tmux source ~/clipack/configs/tmux/.tmux.conf && tmux display \"Config reloaded\"'"
+        bind C-e new-window -n '~/clipack/configs/tmux/tmux.conf' "sh -c '\${EDITOR:-vim} ~/clipack/configs/tmux/tmux.conf && tmux source ~/clipack/configs/tmux/tmux.conf && tmux display \"Config reloaded\"'"
 
         # Reload tmux configuration
-        bind M-r source-file ~/clipack/configs/tmux/.tmux.conf \; display "Config reloaded"
+        bind M-r source-file ~/clipack/configs/tmux/tmux.conf \; display "Config reloaded"
 
         # new window and retain cwd
         bind c new-window -c "#{pane_current_path}"
