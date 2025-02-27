@@ -30,19 +30,25 @@ install:
       content: |
         #!/usr/bin/env bash
 
-        BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
+        BASE_PATH=$(grep 'base:' "$HOME/.config/clipack/config.yaml" | sed 's/.*base: //')
 
         if [ -z "$THEME" ]; then
             THEME="LvimDark"
         fi
 
-        tmux source-file $BASE_PATH/configs/tmux/$THEME.conf
-        tmux source-file $BASE_PATH/configs/tmux/.tmux.conf
+        export TMUX_CONF="$BASE_PATH/configs/tmux/tmux.conf"
+        alias tmux="$BASE_PATH/bin/tmux -f $TMUX_CONF"
+        # export TMUX_PLUGIN_MANAGER_PATH="$BASE_PATH/configs/tmux/plugins"
+        export TMUX_PLUGIN_MANAGER_PATH="~/.tmux/plugins"
 
-        alias tmux="tmux -f $BASE_PATH/configs/tmux/.tmux.conf"
         alias tm="tmux attach -t SYSTEM || tmux new -s SYSTEM"
         alias ta="tmux a -t SYSTEM"
         alias tn="tmux new-session"
+
+        if [ -n "$TMUX" ]; then
+            tmux source-file "$BASE_PATH/configs/tmux/$THEME.conf"
+            tmux source-file "$BASE_PATH/configs/tmux/tmux.conf"
+        fi
     - filename: .tmux.conf
       content: |
           # ==========================
