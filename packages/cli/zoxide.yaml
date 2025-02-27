@@ -1,0 +1,30 @@
+name: zoxide
+version: v0.9.7
+description: A smarter cd command. Supports all major shells.
+homepage: https://github.com/ajeetdsouza/zoxide
+license: MIT
+maintainer: ajeetdsouza
+updated_at: 2025-02-27T19:51:05Z
+tags:
+  - cli
+  - cd
+  - navigation
+install:
+  source:
+    type: git
+    url: https://github.com/ajeetdsouza/zoxide.git
+    ref: main
+  steps:
+    - git clone --branch v0.9.7 --single-branch https://github.com/ajeetdsouza/zoxide.git .
+    - cargo build --release
+    - mkdir -p man/man1
+    - cp target/release/man/* man/man1/
+  binaries:
+    - target/release/zoxide
+  man:
+    - man/man1/zoxide.1
+    - man/man1/zoxide-add.1
+    - man/man1/zoxide-import.1
+    - man/man1/zoxide-init.1
+    - man/man1/zoxide-query.1
+    - man/man1/zoxide-remove.1
