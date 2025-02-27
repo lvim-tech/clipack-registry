@@ -37,17 +37,33 @@ install:
         fi
 
         export TMUX_CONF="$BASE_PATH/configs/tmux/tmux.conf"
-        alias tmux="$BASE_PATH/bin/tmux -f $TMUX_CONF"
-        # export TMUX_PLUGIN_MANAGER_PATH="$BASE_PATH/configs/tmux/plugins"
-        export TMUX_PLUGIN_MANAGER_PATH="~/.tmux/plugins"
+
+        TARGET="$HOME/.tmux.conf"
+
+        if [ -L "$TARGET" ]; then
+            CURRENT_LINK=$(readlink "$TARGET")
+            if [ "$CURRENT_LINK" != "$TMUX_CONF" ]; then
+                rm "$TARGET"
+                ln -s "$TMUX_CONF" "$TARGET"
+            fi
+        elif [ -e "$TARGET" ]; then
+            rm -rf "$TARGET"
+            ln -s "$TMUX_CONF" "$TARGET"
+        else
+            ln -s "$TMUX_CONF" "$TARGET"
+        fi
 
         alias tm="tmux attach -t SYSTEM || tmux new -s SYSTEM"
         alias ta="tmux a -t SYSTEM"
         alias tn="tmux new-session"
 
         if [ -n "$TMUX" ]; then
-            tmux source-file "$BASE_PATH/configs/tmux/$THEME.conf"
-            tmux source-file "$BASE_PATH/configs/tmux/tmux.conf"
+            if [ -f "$BASE_PATH/configs/tmux/$THEME.conf" ]; then
+                tmux source-file "$BASE_PATH/configs/tmux/$THEME.conf"
+            fi
+            if [ -f "$TMUX_CONF" ]; then
+                tmux source-file "$TMUX_CONF"
+            fi
         fi
     - filename: tmux.conf
       content: |
