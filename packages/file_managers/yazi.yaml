@@ -1,5 +1,5 @@
 name: yazi
-version: v0.1.0
+version: v25.2.26
 description: A blazing fast terminal file manager written in Rust.
 homepage: https://github.com/sxyazi/yazi
 license: MIT
@@ -16,7 +16,7 @@ install:
     url: https://github.com/sxyazi/yazi.git
     ref: main
   steps:
-    - git clone --branch v0.1.0 --single-branch https://github.com/sxyazi/yazi.git .
+    - git clone --branch v25.2.26 --single-branch https://github.com/sxyazi/yazi.git .
     - cargo build --release --locked
   binaries:
     - target/release/yazi
