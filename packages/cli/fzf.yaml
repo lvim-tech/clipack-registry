@@ -26,119 +26,119 @@ install:
   additional-config:
     - filename: config.sh
       content: |
-        #!/bin/zsh
+          #!/usr/bin/env bash
 
-        BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
+          BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
 
-        if [ -z "$THEME" ]; then
-            THEME="LvimDark"
-        fi
+          if [ -z "$THEME" ]; then
+              THEME="LvimDark"
+          fi
 
-        REVERSE="--reverse"
-        ICON_MENU=""
-        ICON_EXPLORER="󰙅"
-        ICON_SEARCH_DIRECTORIES_AND_FILES="󱋣"
-        ICON_SEARCH_DIRECTORIES="󰉋"
-        ICON_SEARCH_FILES="󰈔"
-        ICON_SEARCH_IN_FILES="󰈙"
-        ICON_POINTER=""
-        ICON_MARKER=""
-        ICON_PROMPT=""
-        ICON_SEPARATOR=""
+          REVERSE="--reverse"
+          ICON_MENU=""
+          ICON_EXPLORER="󰙅"
+          ICON_SEARCH_DIRECTORIES_AND_FILES="󱋣"
+          ICON_SEARCH_DIRECTORIES="󰉋"
+          ICON_SEARCH_FILES="󰈔"
+          ICON_SEARCH_IN_FILES="󰈙"
+          ICON_POINTER=""
+          ICON_MARKER=""
+          ICON_PROMPT=""
+          ICON_SEPARATOR=""
 
-        # SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN="fd -H --color always"
-        # SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN="fd --color always"
-        # SEARCH_DIRECTORIES_WITH_HIDDEN="fd -H --color always --type d"
-        # SEARCH_DIRECTORIES_WITHOUT_HIDDEN="fd --color always --type d"
-        # SEARCH_FILES_WITH_HIDDEN="fd -H --color always --type f"
-        # SEARCH_FILES_WITHOUT_HIDDEN="fd --color always --type f"
-        # SEARCH_IN_FILES_WITH_HIDDEN="rg --no-heading -H --smart-case --line-number --column --hidden --follow --color=always"
-        # SEARCH_IN_FILES_WITHOUT_HIDDEN="rg --no-heading -H --smart-case --line-number --column --follow --color=always"
-        SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN=("fd" "-H" "--color" "always")
-        SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN=("fd" "--color" "always")
-        SEARCH_DIRECTORIES_WITH_HIDDEN=("fd" "-H" "--color" "always" "--type" "d")
-        SEARCH_DIRECTORIES_WITHOUT_HIDDEN=("fd" "--color" "always" "--type" "d")
-        SEARCH_FILES_WITH_HIDDEN=("fd" "-H" "--color" "always" "--type" "f")
-        SEARCH_FILES_WITHOUT_HIDDEN=("fd" "--color" "always" "--type" "f")
-        SEARCH_IN_FILES_WITH_HIDDEN=("rg" "--no-heading" "-H" "--smart-case" "--line-number" "--column" "--hidden" "--follow" "--color=always")
-        SEARCH_IN_FILES_WITHOUT_HIDDEN=("rg" "--no-heading" "-H" "--smart-case" "--line-number" "--column" "--follow" "--color=always")
+          # SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN="fd -H --color always"
+          # SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN="fd --color always"
+          # SEARCH_DIRECTORIES_WITH_HIDDEN="fd -H --color always --type d"
+          # SEARCH_DIRECTORIES_WITHOUT_HIDDEN="fd --color always --type d"
+          # SEARCH_FILES_WITH_HIDDEN="fd -H --color always --type f"
+          # SEARCH_FILES_WITHOUT_HIDDEN="fd --color always --type f"
+          # SEARCH_IN_FILES_WITH_HIDDEN="rg --no-heading -H --smart-case --line-number --column --hidden --follow --color=always"
+          # SEARCH_IN_FILES_WITHOUT_HIDDEN="rg --no-heading -H --smart-case --line-number --column --follow --color=always"
+          SEARCH_DIRECTORIES_AND_FILES_WITH_HIDDEN=("fd" "-H" "--color" "always")
+          SEARCH_DIRECTORIES_AND_FILES_WITHOUT_HIDDEN=("fd" "--color" "always")
+          SEARCH_DIRECTORIES_WITH_HIDDEN=("fd" "-H" "--color" "always" "--type" "d")
+          SEARCH_DIRECTORIES_WITHOUT_HIDDEN=("fd" "--color" "always" "--type" "d")
+          SEARCH_FILES_WITH_HIDDEN=("fd" "-H" "--color" "always" "--type" "f")
+          SEARCH_FILES_WITHOUT_HIDDEN=("fd" "--color" "always" "--type" "f")
+          SEARCH_IN_FILES_WITH_HIDDEN=("rg" "--no-heading" "-H" "--smart-case" "--line-number" "--column" "--hidden" "--follow" "--color=always")
+          SEARCH_IN_FILES_WITHOUT_HIDDEN=("rg" "--no-heading" "-H" "--smart-case" "--line-number" "--column" "--follow" "--color=always")
 
-        export FZF_DEFAULT_COMMAND="$SEARCH_FILES_WITHOUT_HIDDEN"
+          export FZF_DEFAULT_COMMAND="$SEARCH_FILES_WITHOUT_HIDDEN"
 
-        PREVIEW_ENGINE='
-            VAL={..};
-            [ -f {2} ] || VAL={2};
-            [ -d {2} ] && VAL={2};
-            if [ -f "$VAL" ]; then
-                file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
-            elif [ -d "$VAL" ]; then
-                eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline "$VAL" 2>/dev/null;
-            fi
-        '
+          PREVIEW_ENGINE='
+              VAL={..};
+              [ -f {2} ] && VAL={2};
+              [ -d {2} ] && VAL={2};
+              if [ -f "$VAL" ]; then
+                  file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
+              elif [ -d "$VAL" ]; then
+                  eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline "$VAL" 2>/dev/null;
+              fi
+          '
 
-        export FZF_DEFAULT_OPTS="
-            $REVERSE
-            --ansi
-            --multi
-            --sort
-            --tac
-            --highlight-line \
-            --header='$ICON_EXPLORER SEARCH FILES AND FOLDERS'
-            --prompt='  Browse $ICON_PROMPT '
-            --pointer='$ICON_POINTER'
-            --marker='$ICON_MARKER'
-            --preview='$PREVIEW_ENGINE'
-            --preview-window=right:60%:wrap:noborder
-            --border=none
-            --separator=''
-            --info=inline
-            --nth='..'
-            --bind 'tab:toggle+down'
-            --bind 'shift-tab:toggle+up'
-            --bind 'ctrl-d:preview-down'
-            --bind 'ctrl-u:preview-up'
-            --bind 'ctrl-c:abort'
-            --bind 'alt-h:reload($SEARCH_FILES_WITH_HIDDEN)+change-preview($PREVIEW_ENGINE)'
-            --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'"
+          export FZF_DEFAULT_OPTS="
+              $REVERSE
+              --ansi
+              --multi
+              --sort
+              --tac
+              --highlight-line \
+              --header='$ICON_EXPLORER SEARCH FILES AND FOLDERS'
+              --prompt='  Browse $ICON_PROMPT '
+              --pointer='$ICON_POINTER'
+              --marker='$ICON_MARKER'
+              --preview='$PREVIEW_ENGINE'
+              --preview-window=right:60%:wrap:noborder
+              --border=none
+              --separator=''
+              --info=inline
+              --nth='..'
+              --bind 'tab:toggle+down'
+              --bind 'shift-tab:toggle+up'
+              --bind 'ctrl-d:preview-down'
+              --bind 'ctrl-u:preview-up'
+              --bind 'ctrl-c:abort'
+              --bind 'alt-h:reload($SEARCH_FILES_WITH_HIDDEN)+change-preview($PREVIEW_ENGINE)'
+              --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'"
 
-        source "$BASE_PATH/configs/fzf/$THEME.sh"
+          source "$BASE_PATH/configs/fzf/$THEME.sh"
 
-        fzf_search_files() {
-            local query="$1"
+          fzs() {
+              local query="$1"
 
-            $SEARCH_FILES_WITH_HIDDEN "$query" 2>/dev/null |
-                fzf --ansi --query="$query" \
-                    --preview='[[ -f {1} ]] && bat --color=always --style=header,numbers {1} || echo "Not a valid file."' \
-                    --preview-window=right:60%:wrap:noborder \
-                    --border=none \
-                    --info=inline \
-                    --bind "alt-h:reload($SEARCH_FILES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
-                    --bind "alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)"
-        }
+              $SEARCH_FILES_WITHOUT_HIDDEN "$query" 2>/dev/null |
+                  fzf --ansi --query="$query" \
+                      --preview='[[ -f {1} ]] && bat --color=always --style=header,numbers {1} || echo "Not a valid file."' \
+                      --preview-window=right:60%:wrap:noborder \
+                      --border=none \
+                      --info=inline \
+                      --bind "alt-h:reload($SEARCH_FILES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
+                      --bind "alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)"
+          }
 
-        fzf_search_folders() {
-            local query="$1"
+          fzd() {
+              local query="$1"
 
-            $SEARCH_DIRECTORIES_WITH_HIDDEN "$query" 2>/dev/null |
-                fzf --ansi --query="$query" \
-                    --preview='eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline {1} 2>/dev/null' \
-                    --preview-window=right:60%:wrap:noborder \
-                    --bind "alt-h:reload($SEARCH_DIRECTORIES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
-                    --bind "alt-l:reload($SEARCH_DIRECTORIES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)"
-        }
+              $SEARCH_DIRECTORIES_WITHOUT_HIDDEN "$query" 2>/dev/null |
+                  fzf --ansi --query="$query" \
+                      --preview='eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline {1} 2>/dev/null' \
+                      --preview-window=right:60%:wrap:noborder \
+                      --bind "alt-h:reload($SEARCH_DIRECTORIES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
+                      --bind "alt-l:reload($SEARCH_DIRECTORIES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)"
+          }
 
-        fzf_search_in_files() {
-            local query="$1"
+          fzw() {
+              local query="$1"
 
-            "${SEARCH_IN_FILES_WITH_HIDDEN[@]}" "$query" 2>/dev/null |
-                fzf --delimiter=: \
-                    --ansi --query="$query" \
-                    --bind "change:reload:${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q} || true" \
-                    --bind "alt-h:reload(${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
-                    --bind "alt-l:reload(${SEARCH_IN_FILES_WITHOUT_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
-                    --preview-window=~0,+{2}+1/2 \
-                    --preview="[[ -n {1} ]] && bat --color=always --style=header,numbers --highlight-line={2} {1} || echo 'No preview available.'"
-        }
+              "${SEARCH_IN_FILES_WITHOUT_HIDDEN[@]}" "$query" 2>/dev/null |
+                  fzf --delimiter=: \
+                      --ansi --query="$query" \
+                      --bind "change:reload:${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q} || true" \
+                      --bind "alt-h:reload(${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
+                      --bind "alt-l:reload(${SEARCH_IN_FILES_WITHOUT_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
+                      --preview-window=~0,+{2}+1/2 \
+                      --preview="[[ -n {1} ]] && bat --color=always --style=header,numbers --highlight-line={2} {1} || echo 'No preview available.'"
+          }
     - filename: LvimDark.sh
       content: |
         #!/usr/bin/env bash
