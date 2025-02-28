@@ -17,7 +17,7 @@ install:
     ref: main
   steps:
     - git clone --branch v0.1.0 --single-branch https://github.com/sxyazi/yazi.git .
-    - cargo build --release
+    - cargo build --release --locked
   binaries:
     - target/release/yazi
   additional-config:
