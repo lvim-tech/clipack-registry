@@ -1,0 +1,27 @@
+name: posting
+version: v2.3.0
+description: A tool for posting content to various platforms.
+homepage: https://github.com/darrenburns/posting
+license: MIT
+maintainer: darrenburns
+updated_at: 2025-02-28T00:00:00Z
+tags:
+  - cli
+  - posting
+  - content
+  - social-media
+build:
+  source:
+    type: git
+    url: https://github.com/darrenburns/posting.git
+    ref: main
+  steps:
+    - git clone --branch 2.3.0 --single-branch https://github.com/darrenburns/posting.git .
+    - pip install -r requirements.txt
+    - python setup.py build
+  binaries:
+    - dist/posting
+  man:
+    - man/man1/posting.1
+    - man/man1/posting-config.1
+    - man/man1/posting-publish.1
