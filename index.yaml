@@ -1,8 +1,8 @@
 packages:
   - packages/cli/eza.yaml
   - packages/cli/fzf.yaml
+  - packages/cli/rclone.yaml
   - packages/cli/tmux.yaml
   - packages/cli/vivid.yaml
   - packages/cli/zoxide.yaml
-  - packages/content_managers/posting.yaml
   - packages/file_managers/yazi.yaml
