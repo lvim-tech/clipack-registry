@@ -16,7 +16,7 @@ install:
     url: https://github.com/darrenburns/posting.git
     ref: main
   steps:
-    - git clone --branch v2.3.0 --single-branch https://github.com/darrenburns/posting.git .
+    - git clone --branch 2.3.0 --single-branch https://github.com/darrenburns/posting.git .
     - python setup.py build
   binaries:
     - build/lib/posting
