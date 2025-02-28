@@ -1,0 +1,647 @@
+name: yazi
+version: v0.1.0
+description: A blazing fast terminal file manager written in Rust.
+homepage: https://github.com/sxyazi/yazi
+license: MIT
+maintainer: sxyazi
+updated_at: 2025-02-28T11:06:42Z
+tags:
+  - cli
+  - file manager
+  - terminal
+  - rust
+install:
+  source:
+    type: git
+    url: https://github.com/sxyazi/yazi.git
+    ref: main
+  steps:
+    - git clone --branch v0.1.0 --single-branch https://github.com/sxyazi/yazi.git .
+    - cargo build --release
+  binaries:
+    - target/release/yazi
+  additional-config:
+    - filename: LvimDark.conf
+      content: |
+        [manager]
+        cwd = { fg = "#374646", italic = true }
+
+        # Hovered
+        hovered         = { bg = "#2f3940" }
+        preview_hovered = { bg = "#2f3940" }
+
+        # Find
+        find_keyword  = { fg = "#181d1f", bg = "#FF9C2A", bold = true }
+        find_position = { fg = "${blue2}", bg = "#1e2f37", bold = true }
+
+        # Marker
+        marker_copied   = { fg = "${green1}", bg = "${green1}" }
+        marker_cut      = { fg = "#e65e4f", bg = "#e65e4f" }
+        marker_marked   = { fg = "#c75940", bg = "#c75940" }
+        marker_selected = { fg = "#0A85B9", bg = "#0A85B9" }
+
+        # Tab
+        tab_active   = { fg = "#5e8888", bg = "#2f3940" }
+        tab_inactive = { fg = "${fg_gutter}", bg = "#20272b" }
+        tab_width    = 1
+
+        # Count
+        count_copied   = { fg = "#5e8888", bg = "${green2}" }
+        count_cut      = { fg = "#5e8888", bg = "${red1}" }
+        count_selected = { fg = "#5e8888", bg = "${blue0}" }
+
+        # Border
+        border_symbol = "│"
+        border_style  = { fg = "#6a804c" }
+
+        [mode]
+        normal_main = { fg = "#1a1f22", bg = "#0A85B9", bold = true }
+        normal_alt  = { fg = "#0A85B9", bg = "${fg_gutter}" }
+
+        select_main = { fg = "#1a1f22", bg = "#c75940", bold = true }
+        select_alt  = { fg = "#c75940", bg = "${fg_gutter}" }
+
+        unset_main  = { fg = "#1a1f22", bg = "#177ab3", bold = true }
+        unset_alt   = { fg = "#177ab3", bg = "${fg_gutter}" }
+
+        [status]
+        separator_open    = ""
+        separator_close   = ""
+        # separator_style = { fg = "${fg_gutter}", bg = "${fg_gutter}" }
+
+        # Progress
+        progress_label  = { fg = "#374646", bold = true }
+        progress_normal = { fg = "#20272b" }
+        progress_error  = { fg = "#e65e4f" }
+
+        # Permissions
+        perm_type  = { fg = "#0A85B9" }
+        perm_read  = { fg = "#edc060" }
+        perm_write = { fg = "#e65e4f" }
+        perm_exec  = { fg = "#8AA55F" }
+        perm_sep   = { fg = "${terminal_black}" }
+
+        [pick]
+        border   = { fg = "#6a804c" }
+        active   = { fg = "#5e8888",  bg = "#272f34" }
+        inactive = { fg = "#5e8888" }
+
+        # Input
+        [input]
+        border   = { fg = "${blue2}" }
+        title    = { fg = "${blue2}" }
+        value    = { fg = "#177ab3" }
+        selected = { bg = "#272f34" }
+
+        # Completion
+        [completion]
+        border   = { fg = "${blue2}" }
+        active   = { fg = "#5e8888", bg = "#272f34" }
+        inactive = { fg = "#5e8888" }
+
+        icon_file    = ""
+        icon_folder  = ""
+        icon_command = ""
+
+        # Tasks
+        [tasks]
+        border  = { fg = "#6a804c" }
+        title   = { fg = "#6a804c" }
+        hovered = { fg = "#5e8888", bg="#272f34" }
+
+        # Which
+        [which]
+        cols            = 3
+        mask            = { bg = "#181d1f" }
+        cand            = { fg = "#018FA6" }
+        rest            = { fg = "#0A85B9" }
+        desc            = { fg = "#c75940" }
+        separator       = " ➜ "
+        separator_style = { fg = "#4d6263" }
+
+        # Confirm
+        [confirm]
+        border  = { fg = "${blue2}" }
+        title   = { fg = "#6a804c" }
+        content = {}
+        list    = {}
+        btn_yes = { bg = "#272f34" }
+        btn_no  = {}
+        btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+        # Spot
+        [spot]
+        border  = { fg = "#6a804c" }
+        title   = { fg = "#6a804c" }
+
+        # Notify
+        [notify]
+        title_info  = { fg = "#0974a1" }
+        title_warn  = { fg = "#ff9010" }
+        title_error = { fg = "#e34a39" }
+
+        icon_error = ""
+        icon_warn = ""
+        icon_info = ""
+
+        # Help
+        [help]
+        on      = { fg = "#8AA55F" }
+        run     = { fg = "#c75940" }
+        hovered = { bg = "#2f3940" }
+        footer  = { fg = "#5e8888", bg = "#20272b" }
+
+        [filetype]
+
+        rules = [
+            # Images
+            { mime = "image/*", fg = "#edc060" },
+
+            # Media
+            { mime = "{audio,video}/*", fg = "#c75940" },
+
+            # Archives
+            { mime = "application/*zip", fg = "#e65e4f" },
+            { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#e65e4f" },
+
+            # Documents
+            { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#018FA6" },
+
+            # Empty files
+            # { mime = "inode/x-empty", fg = "#e65e4f" },
+
+            # Special files
+            { name = "*", is = "orphan", bg = "#e65e4f" },
+            { name = "*", is = "exec"  , fg = "#8AA55F" },
+
+            # Fallback
+            { name = "*/", fg = "#0A85B9" }
+        ]
+    - filename: LvimDarker.conf
+      content: |
+        [manager]
+        cwd = { fg = "#374646", italic = true }
+
+        # Hovered
+        hovered         = { bg = "#2b343a" }
+        preview_hovered = { bg = "#2b343a" }
+
+        # Find
+        find_keyword  = { fg = "#141819", bg = "#FF9C2A", bold = true }
+        find_position = { fg = "${blue2}", bg = "#1a2a31", bold = true }
+
+        # Marker
+        marker_copied   = { fg = "${green1}", bg = "${green1}" }
+        marker_cut      = { fg = "#e65e4f", bg = "#e65e4f" }
+        marker_marked   = { fg = "#c75940", bg = "#c75940" }
+        marker_selected = { fg = "#0A85B9", bg = "#0A85B9" }
+
+        # Tab
+        tab_active   = { fg = "#5e8888", bg = "#2b343a" }
+        tab_inactive = { fg = "${fg_gutter}", bg = "#1c2225" }
+        tab_width    = 1
+
+        # Count
+        count_copied   = { fg = "#5e8888", bg = "${green2}" }
+        count_cut      = { fg = "#5e8888", bg = "${red1}" }
+        count_selected = { fg = "#5e8888", bg = "${blue0}" }
+
+        # Border
+        border_symbol = "│"
+        border_style  = { fg = "#6a7f4b" }
+
+        [mode]
+        normal_main = { fg = "#161b1e", bg = "#0A85B9", bold = true }
+        normal_alt  = { fg = "#0A85B9", bg = "${fg_gutter}" }
+
+        select_main = { fg = "#161b1e", bg = "#c75940", bold = true }
+        select_alt  = { fg = "#c75940", bg = "${fg_gutter}" }
+
+        unset_main  = { fg = "#161b1e", bg = "#177ab3", bold = true }
+        unset_alt   = { fg = "#177ab3", bg = "${fg_gutter}" }
+
+        [status]
+        separator_open    = ""
+        separator_close   = ""
+        # separator_style = { fg = "${fg_gutter}", bg = "${fg_gutter}" }
+
+        # Progress
+        progress_label  = { fg = "#374646", bold = true }
+        progress_normal = { fg = "#1c2225" }
+        progress_error  = { fg = "#e65e4f" }
+
+        # Permissions
+        perm_type  = { fg = "#0A85B9" }
+        perm_read  = { fg = "#edc060" }
+        perm_write = { fg = "#e65e4f" }
+        perm_exec  = { fg = "#8AA55F" }
+        perm_sep   = { fg = "${terminal_black}" }
+
+        [pick]
+        border   = { fg = "#6a7f4b" }
+        active   = { fg = "#5e8888",  bg = "#232a2e" }
+        inactive = { fg = "#5e8888" }
+
+        # Input
+        [input]
+        border   = { fg = "${blue2}" }
+        title    = { fg = "${blue2}" }
+        value    = { fg = "#177ab3" }
+        selected = { bg = "#232a2e" }
+
+        # Completion
+        [completion]
+        border   = { fg = "${blue2}" }
+        active   = { fg = "#5e8888", bg = "#232a2e" }
+        inactive = { fg = "#5e8888" }
+
+        icon_file    = ""
+        icon_folder  = ""
+        icon_command = ""
+
+        # Tasks
+        [tasks]
+        border  = { fg = "#6a7f4b" }
+        title   = { fg = "#6a7f4b" }
+        hovered = { fg = "#5e8888", bg="#232a2e" }
+
+        # Which
+        [which]
+        cols            = 3
+        mask            = { bg = "#141819" }
+        cand            = { fg = "#018FA6" }
+        rest            = { fg = "#0A85B9" }
+        desc            = { fg = "#c75940" }
+        separator       = " ➜ "
+        separator_style = { fg = "#4d6263" }
+
+        # Confirm
+        [confirm]
+        border  = { fg = "${blue2}" }
+        title   = { fg = "#6a7f4b" }
+        content = {}
+        list    = {}
+        btn_yes = { bg = "#232a2e" }
+        btn_no  = {}
+        btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+        # Spot
+        [spot]
+        border  = { fg = "#6a7f4b" }
+        title   = { fg = "#6a7f4b" }
+
+        # Notify
+        [notify]
+        title_info  = { fg = "#0974a1" }
+        title_warn  = { fg = "#ff9010" }
+        title_error = { fg = "#e34a39" }
+
+        icon_error = ""
+        icon_warn = ""
+        icon_info = ""
+
+        # Help
+        [help]
+        on      = { fg = "#8AA55F" }
+        run     = { fg = "#c75940" }
+        hovered = { bg = "#2b343a" }
+        footer  = { fg = "#5e8888", bg = "#1c2225" }
+
+        [filetype]
+
+        rules = [
+            # Images
+            { mime = "image/*", fg = "#edc060" },
+
+            # Media
+            { mime = "{audio,video}/*", fg = "#c75940" },
+
+            # Archives
+            { mime = "application/*zip", fg = "#e65e4f" },
+            { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#e65e4f" },
+
+            # Documents
+            { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#018FA6" },
+
+            # Empty files
+            # { mime = "inode/x-empty", fg = "#e65e4f" },
+
+            # Special files
+            { name = "*", is = "orphan", bg = "#e65e4f" },
+            { name = "*", is = "exec"  , fg = "#8AA55F" },
+
+            # Fallback
+            { name = "*/", fg = "#0A85B9" }
+        ]
+    - filename: LvimKanagawa.conf
+      content: |
+        [manager]
+        cwd = { fg = "#4b4b61", italic = true }
+
+        # Hovered
+        hovered         = { bg = "#1a1a22" }
+        preview_hovered = { bg = "#1a1a22" }
+
+        # Find
+        find_keyword  = { fg = "#17181c", bg = "#c99460", bold = true }
+        find_position = { fg = "${blue2}", bg = "#242832", bold = true }
+
+        # Marker
+        marker_copied   = { fg = "${green1}", bg = "${green1}" }
+        marker_cut      = { fg = "#b65252", bg = "#b65252" }
+        marker_marked   = { fg = "#c4746e", bg = "#c4746e" }
+        marker_selected = { fg = "#4d699b", bg = "#4d699b" }
+
+        # Tab
+        tab_active   = { fg = "#54546D", bg = "#1a1a22" }
+        tab_inactive = { fg = "${fg_gutter}", bg = "#202127" }
+        tab_width    = 1
+
+        # Count
+        count_copied   = { fg = "#54546D", bg = "${green2}" }
+        count_cut      = { fg = "#54546D", bg = "${red1}" }
+        count_selected = { fg = "#54546D", bg = "${blue0}" }
+
+        # Border
+        border_symbol = "│"
+        border_style  = { fg = "#5a6949" }
+
+        [mode]
+        normal_main = { fg = "#1a1a1f", bg = "#4d699b", bold = true }
+        normal_alt  = { fg = "#4d699b", bg = "${fg_gutter}" }
+
+        select_main = { fg = "#1a1a1f", bg = "#c4746e", bold = true }
+        select_alt  = { fg = "#c4746e", bg = "${fg_gutter}" }
+
+        unset_main  = { fg = "#1a1a1f", bg = "#766b90", bold = true }
+        unset_alt   = { fg = "#766b90", bg = "${fg_gutter}" }
+
+        [status]
+        separator_open    = ""
+        separator_close   = ""
+        # separator_style = { fg = "${fg_gutter}", bg = "${fg_gutter}" }
+
+        # Progress
+        progress_label  = { fg = "#4b4b61", bold = true }
+        progress_normal = { fg = "#202127" }
+        progress_error  = { fg = "#b65252" }
+
+        # Permissions
+        perm_type  = { fg = "#4d699b" }
+        perm_read  = { fg = "#e0c286" }
+        perm_write = { fg = "#b65252" }
+        perm_exec  = { fg = "#6e8156" }
+        perm_sep   = { fg = "${terminal_black}" }
+
+        [pick]
+        border   = { fg = "#5a6949" }
+        active   = { fg = "#54546D",  bg = "#23242a" }
+        inactive = { fg = "#54546D" }
+
+        # Input
+        [input]
+        border   = { fg = "${blue2}" }
+        title    = { fg = "${blue2}" }
+        value    = { fg = "#766b90" }
+        selected = { bg = "#23242a" }
+
+        # Completion
+        [completion]
+        border   = { fg = "${blue2}" }
+        active   = { fg = "#54546D", bg = "#23242a" }
+        inactive = { fg = "#54546D" }
+
+        icon_file    = ""
+        icon_folder  = ""
+        icon_command = ""
+
+        # Tasks
+        [tasks]
+        border  = { fg = "#5a6949" }
+        title   = { fg = "#5a6949" }
+        hovered = { fg = "#54546D", bg="#23242a" }
+
+        # Which
+        [which]
+        cols            = 3
+        mask            = { bg = "#17181c" }
+        cand            = { fg = "#597b75" }
+        rest            = { fg = "#4d699b" }
+        desc            = { fg = "#c4746e" }
+        separator       = " ➜ "
+        separator_style = { fg = "#51515b" }
+
+        # Confirm
+        [confirm]
+        border  = { fg = "${blue2}" }
+        title   = { fg = "#5a6949" }
+        content = {}
+        list    = {}
+        btn_yes = { bg = "#23242a" }
+        btn_no  = {}
+        btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+        # Spot
+        [spot]
+        border  = { fg = "#5a6949" }
+        title   = { fg = "#5a6949" }
+
+        # Notify
+        [notify]
+        title_info  = { fg = "#4a6494" }
+        title_warn  = { fg = "#c68f58" }
+        title_error = { fg = "#b24b4b" }
+
+        icon_error = ""
+        icon_warn = ""
+        icon_info = ""
+
+        # Help
+        [help]
+        on      = { fg = "#6e8156" }
+        run     = { fg = "#c4746e" }
+        hovered = { bg = "#1a1a22" }
+        footer  = { fg = "#54546D", bg = "#202127" }
+
+        [filetype]
+
+        rules = [
+            # Images
+            { mime = "image/*", fg = "#e0c286" },
+
+            # Media
+            { mime = "{audio,video}/*", fg = "#c4746e" },
+
+            # Archives
+            { mime = "application/*zip", fg = "#b65252" },
+            { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#b65252" },
+
+            # Documents
+            { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#597b75" },
+
+            # Empty files
+            # { mime = "inode/x-empty", fg = "#b65252" },
+
+            # Special files
+            { name = "*", is = "orphan", bg = "#b65252" },
+            { name = "*", is = "exec"  , fg = "#6e8156" },
+
+            # Fallback
+            { name = "*/", fg = "#4d699b" }
+        ]
+    - filename: LvimLight.conf
+      content: |
+        [manager]
+        cwd = { fg = "#93b6b6", italic = true }
+
+        # Hovered
+        hovered         = { bg = "#262f34" }
+        preview_hovered = { bg = "#262f34" }
+
+        # Find
+        find_keyword  = { fg = "#dadada", bg = "#a96400", bold = true }
+        find_position = { fg = "${blue2}", bg = "#cfdbe0", bold = true }
+
+        # Marker
+        marker_copied   = { fg = "${green1}", bg = "${green1}" }
+        marker_cut      = { fg = "#ac4135", bg = "#ac4135" }
+        marker_marked   = { fg = "#bc533c", bg = "#bc533c" }
+        marker_selected = { fg = "#0879a9", bg = "#0879a9" }
+
+        # Tab
+        tab_active   = { fg = "#5e8888", bg = "#262f34" }
+        tab_inactive = { fg = "${fg_gutter}", bg = "#E4E4E4" }
+        tab_width    = 1
+
+        # Count
+        count_copied   = { fg = "#5e8888", bg = "${green2}" }
+        count_cut      = { fg = "#5e8888", bg = "${red1}" }
+        count_selected = { fg = "#5e8888", bg = "${blue0}" }
+
+        # Border
+        border_symbol = "│"
+        border_style  = { fg = "#72805a" }
+
+        [mode]
+        normal_main = { fg = "#b6b6b6", bg = "#0879a9", bold = true }
+        normal_alt  = { fg = "#0879a9", bg = "${fg_gutter}" }
+
+        select_main = { fg = "#b6b6b6", bg = "#bc533c", bold = true }
+        select_alt  = { fg = "#bc533c", bg = "${fg_gutter}" }
+
+        unset_main  = { fg = "#b6b6b6", bg = "#1981bd", bold = true }
+        unset_alt   = { fg = "#1981bd", bg = "${fg_gutter}" }
+
+        [status]
+        separator_open    = ""
+        separator_close   = ""
+        # separator_style = { fg = "${fg_gutter}", bg = "${fg_gutter}" }
+
+        # Progress
+        progress_label  = { fg = "#93b6b6", bold = true }
+        progress_normal = { fg = "#E4E4E4" }
+        progress_error  = { fg = "#ac4135" }
+
+        # Permissions
+        perm_type  = { fg = "#0879a9" }
+        perm_read  = { fg = "#7e652f" }
+        perm_write = { fg = "#ac4135" }
+        perm_exec  = { fg = "#748c50" }
+        perm_sep   = { fg = "${terminal_black}" }
+
+        [pick]
+        border   = { fg = "#72805a" }
+        active   = { fg = "#5e8888",  bg = "#e7e7e7" }
+        inactive = { fg = "#5e8888" }
+
+        # Input
+        [input]
+        border   = { fg = "${blue2}" }
+        title    = { fg = "${blue2}" }
+        value    = { fg = "#1981bd" }
+        selected = { bg = "#e7e7e7" }
+
+        # Completion
+        [completion]
+        border   = { fg = "${blue2}" }
+        active   = { fg = "#5e8888", bg = "#e7e7e7" }
+        inactive = { fg = "#5e8888" }
+
+        icon_file    = ""
+        icon_folder  = ""
+        icon_command = ""
+
+        # Tasks
+        [tasks]
+        border  = { fg = "#72805a" }
+        title   = { fg = "#72805a" }
+        hovered = { fg = "#5e8888", bg="#e7e7e7" }
+
+        # Which
+        [which]
+        cols            = 3
+        mask            = { bg = "#dadada" }
+        cand            = { fg = "#01778a" }
+        rest            = { fg = "#0879a9" }
+        desc            = { fg = "#bc533c" }
+        separator       = " ➜ "
+        separator_style = { fg = "#789698" }
+
+        # Confirm
+        [confirm]
+        border  = { fg = "${blue2}" }
+        title   = { fg = "#72805a" }
+        content = {}
+        list    = {}
+        btn_yes = { bg = "#e7e7e7" }
+        btn_no  = {}
+        btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+        # Spot
+        [spot]
+        border  = { fg = "#72805a" }
+        title   = { fg = "#72805a" }
+
+        # Notify
+        [notify]
+        title_info  = { fg = "#0d8abf" }
+        title_warn  = { fg = "#b66400" }
+        title_error = { fg = "#c53f30" }
+
+        icon_error = ""
+        icon_warn = ""
+        icon_info = ""
+
+        # Help
+        [help]
+        on      = { fg = "#748c50" }
+        run     = { fg = "#bc533c" }
+        hovered = { bg = "#262f34" }
+        footer  = { fg = "#5e8888", bg = "#E4E4E4" }
+
+        [filetype]
+
+        rules = [
+            # Images
+            { mime = "image/*", fg = "#7e652f" },
+
+            # Media
+            { mime = "{audio,video}/*", fg = "#bc533c" },
+
+            # Archives
+            { mime = "application/*zip", fg = "#ac4135" },
+            { mime = "application/x-{tar,bzip*,7z-compressed,xz,rar}", fg = "#ac4135" },
+
+            # Documents
+            { mime = "application/{pdf,doc,rtf,vnd.*}", fg = "#01778a" },
+
+            # Empty files
+            # { mime = "inode/x-empty", fg = "#ac4135" },
+
+            # Special files
+            { name = "*", is = "orphan", bg = "#ac4135" },
+            { name = "*", is = "exec"  , fg = "#748c50" },
+
+            # Fallback
+            { name = "*/", fg = "#0879a9" }
+        ]
