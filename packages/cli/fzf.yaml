@@ -26,7 +26,7 @@ install:
   additional-config:
     - filename: config.sh
       content: |
-        #!/usr/bin/env bash
+        #!/bin/zsh
 
         BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
 
@@ -70,7 +70,6 @@ install:
         PREVIEW_ENGINE='
             VAL="{2}";
             [ -n "$VAL" ] || exit 0;
-
             if [ -f "$VAL" ]; then
                 file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
             elif [ -d "$VAL" ]; then
@@ -99,9 +98,15 @@ install:
             --bind 'shift-tab:toggle+up'
             --bind 'ctrl-d:preview-down'
             --bind 'ctrl-u:preview-up'
-            --bind 'ctrl-c:abort'
             --bind 'alt-h:reload($SEARCH_FILES_WITH_HIDDEN)+change-preview($PREVIEW_ENGINE)'
-            --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'"
+            --bind 'alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN)+change-preview($PREVIEW_ENGINE)'
+            --bind='ctrl-t:execute(
+                if [ -f {} ]; then
+                    $EDITOR {};
+                fi
+            )+abort'
+            --bind 'enter:execute(echo {})+abort'
+            --bind 'ctrl-c:abort'"
 
         source "$BASE_PATH/configs/fzf/$THEME.sh"
 
@@ -122,14 +127,20 @@ install:
 
         fzd() {
             local query="$1"
+            local selected_dir
 
-            $SEARCH_DIRECTORIES_WITHOUT_HIDDEN "$query" 2>/dev/null |
+            selected_dir="$($SEARCH_DIRECTORIES_WITHOUT_HIDDEN "$query" 2>/dev/null |
                 fzf --query="$query" \
                     --header="${ICON_SEARCH} ${SEARCH_DIRECTORIES_TITLE}" \
                     --preview='eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline {1} 2>/dev/null' \
                     --preview-window=right:60%:wrap:noborder \
                     --bind "alt-h:reload($SEARCH_DIRECTORIES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
-                    --bind "alt-l:reload($SEARCH_DIRECTORIES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)"
+                    --bind "alt-l:reload($SEARCH_DIRECTORIES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
+                    --bind 'ctrl-t:accept')"
+
+            if [ -n "$selected_dir" ]; then
+                cd "${selected_dir}" || return
+            fi
         }
 
         fzw() {
