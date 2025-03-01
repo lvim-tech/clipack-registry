@@ -68,14 +68,15 @@ install:
         export FZF_DEFAULT_COMMAND="$SEARCH_FILES_WITHOUT_HIDDEN"
 
         PREVIEW_ENGINE='
-            VAL="{2}";
-            [ -n "$VAL" ] || exit 0;
-
-            if [ -f "$VAL" ]; then
-                file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
-            elif [ -d "$VAL" ]; then
-                eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline "$VAL" 2>/dev/null;
-          fi
+          [[ -f {1} ]] && bat --color=always --style=header,numbers {1} || echo "Not a valid file.";
+          # VAL="{2}";
+          # [ -n "$VAL" ] || exit 0;
+          #
+          # if [ -f "$VAL" ]; then
+          #     file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
+          # elif [ -d "$VAL" ]; then
+          #     eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline "$VAL" 2>/dev/null;
+          # fi
         '
 
         export FZF_DEFAULT_OPTS="
