@@ -70,6 +70,7 @@ install:
         PREVIEW_ENGINE='
             VAL="{2}";
             [ -n "$VAL" ] || exit 0;
+
             if [ -f "$VAL" ]; then
                 file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
             elif [ -d "$VAL" ]; then
@@ -105,7 +106,6 @@ install:
                     $EDITOR {};
                 fi
             )+abort'
-            --bind 'enter:execute(echo {})+abort'
             --bind 'ctrl-c:abort'"
 
         source "$BASE_PATH/configs/fzf/$THEME.sh"
@@ -122,7 +122,8 @@ install:
                     --border=none \
                     --info=inline \
                     --bind "alt-h:reload($SEARCH_FILES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
-                    --bind "alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)"
+                    --bind "alt-l:reload($SEARCH_FILES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
+                    --bind "enter:execute(echo {})+abort"
         }
 
         fzd() {
@@ -136,6 +137,7 @@ install:
                     --preview-window=right:60%:wrap:noborder \
                     --bind "alt-h:reload($SEARCH_DIRECTORIES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
                     --bind "alt-l:reload($SEARCH_DIRECTORIES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
+                    --bind "enter:execute(echo {})+abort" \
                     --bind 'ctrl-t:accept')"
 
             if [ -n "$selected_dir" ]; then
@@ -146,13 +148,14 @@ install:
         fzw() {
             local query="$1"
 
-            "${SEARCH_IN_FILES_WITHOUT_HIDDEN[@]}" "$query" 2>/dev/null |
+            $SEARCH_IN_FILES_WITHOUT_HIDDEN "$query" 2>/dev/null |
                 fzf --delimiter=: \
                     --query="$query" \
-                    --header="${ICON_SEARCH} ${SEARCH_IN_FILES_TITLE}" \
+                    --header="$ICON_SEARCH $SEARCH_IN_FILES_TITLE" \
                     --bind "change:reload:${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q} || true" \
                     --bind "alt-h:reload(${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
                     --bind "alt-l:reload(${SEARCH_IN_FILES_WITHOUT_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
+                    --bind "enter:execute(echo {})+abort" \
                     --preview-window=~0,+{2}+1/2 \
                     --preview="[[ -n {1} ]] && bat --color=always --style=header,numbers --highlight-line={2} {1} || echo 'No preview available.'"
         }
