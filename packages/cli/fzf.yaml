@@ -186,7 +186,7 @@ install:
           --color=query:#5e8888:regular \
           --color=scrollbar:#6a804c \
           --color=separator:#ff9c2a \
-          --color=spinner:#b84e36 \
+          --color=spinner:#b84e36
     - filename: LvimDarker.sh
       content: |
         #!/usr/bin/env bash
@@ -212,7 +212,7 @@ install:
           --color=query:#5e8888:regular \
           --color=scrollbar:#6a7f4b \
           --color=separator:#ff9c2a \
-          --color=spinner:#b84e36 \
+          --color=spinner:#b84e36
     - filename: LvimKanagawa.sh
       content: |
         #!/usr/bin/env bash
@@ -238,7 +238,7 @@ install:
           --color=query:#54546d:regular \
           --color=scrollbar:#5a6949 \
           --color=separator:#c99460 \
-          --color=spinner:#c16d67 \
+          --color=spinner:#c16d67
     - filename: LvimLight.sh
       content: |
         #!/usr/bin/env bash
@@ -264,4 +264,4 @@ install:
           --color=query:#5e8888:regular \
           --color=scrollbar:#72805a \
           --color=separator:#a96400 \
-          --color=spinner:#d15a3f \
+          --color=spinner:#d15a3f
