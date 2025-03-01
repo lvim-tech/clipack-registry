@@ -155,7 +155,8 @@ install:
                     --bind "change:reload:${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q} || true" \
                     --bind "alt-h:reload(${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
                     --bind "alt-l:reload(${SEARCH_IN_FILES_WITHOUT_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
-                    --bind "enter:execute(echo {})+abort" \
+                    --bind 'ctrl-t:execute(file=$(echo {} | cut -d: -f1); $EDITOR "$file")+abort' \
+                    --bind "enter:execute(echo {} | cut -d: -f1)+abort" \
                     --preview-window=~0,+{2}+1/2 \
                     --preview="[[ -n {1} ]] && bat --color=always --style=header,numbers --highlight-line={2} {1} || echo 'No preview available.'"
         }
