@@ -72,7 +72,7 @@ install:
         [directory]
         truncation_length = 3
         truncate_to_repo = false
-        truncation_symbol = " …/"
+        truncation_symbol = " 󰇘/"
         home_symbol = " "
         style = "bold #146b9c"
         read_only_style = "bold #e34a39"
@@ -248,7 +248,7 @@ install:
         [directory]
         truncation_length = 3
         truncate_to_repo = false
-        truncation_symbol = " …/"
+        truncation_symbol = " 󰇘/"
         home_symbol = " "
         style = "bold #146b9c"
         read_only_style = "bold #e34a39"
@@ -424,7 +424,7 @@ install:
         [directory]
         truncation_length = 3
         truncate_to_repo = false
-        truncation_symbol = " …/"
+        truncation_symbol = " 󰇘/"
         home_symbol = " "
         style = "bold #71678a"
         read_only_style = "bold #b24b4b"
@@ -600,7 +600,7 @@ install:
         [directory]
         truncation_length = 3
         truncate_to_repo = false
-        truncation_symbol = " …/"
+        truncation_symbol = " 󰇘/"
         home_symbol = " "
         style = "bold #1f91d1"
         read_only_style = "bold #c53f30"
