@@ -1,0 +1,42 @@
+name: delta
+version: v0.18.2
+description: A viewer for git and diff output with syntax highlighting and line numbering
+homepage: https://github.com/dandavison/delta
+license: MIT
+maintainer: dandavison
+updated_at: 2025-03-02T12:50:51Z
+tags:
+  - cli
+  - git
+  - diff
+  - syntax-highlighting
+install:
+  source:
+    type: git
+    url: https://github.com/dandavison/delta.git
+    ref: main
+  steps:
+    - git clone --branch 0.18.2 --single-branch https://github.com/dandavison/delta.git .
+    - cargo build --release
+    - mkdir -p man/man1
+    - cp etc/completion/completion.bash .
+    - cp etc/completion/completion.zsh .
+  binaries:
+    - target/release/delta
+  man:
+    - etc/delta.1
+  additional-config:
+    - filename: config.sh
+      content: |
+        #!/bin/zsh
+
+        BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+
+        if [ -z "$THEME" ]; then
+            THEME="LvimDark"
+        fi
+
+        export DELTA_CONFIG_DIR="$BASE_PATH/configs/delta"
+
+        # Update theme in git config
+        git config --global delta.features "$THEME"
