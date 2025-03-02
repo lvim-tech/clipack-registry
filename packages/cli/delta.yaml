@@ -19,12 +19,18 @@ install:
     - git clone --branch 0.18.2 --single-branch https://github.com/dandavison/delta.git .
     - cargo build --release
     - mkdir -p man/man1
-    - env NO_COLOR=1 delta --help | col -b > man/man1/delta.md
-    - pandoc man/man1/delta.md -s -t man -o man/man1/delta.1
-    - rm man/man1/delta.md
-    # - env NO_COLOR=1 ./target/release/delta --help > man/man1/delta.1 2>/dev/null
-    # - NO_COLOR=1 ./target/release/delta --help > man/man1/delta.1 2>/dev/null
-    # - ./target/release/delta --help | env DELTA_PAGER=cat > man/man1/delta.1 2>/dev/null
+    - env NO_COLOR=1 ./target/release/delta --help > delta_help.txt
+    - echo '# delta' > delta_help.md
+    - echo 'A viewer for git and diff output' >> delta_help.md
+    - echo '## SYNOPSIS' >> delta_help.md
+    - echo '```' >> delta_help.md
+    - echo 'delta [OPTIONS] [MINUS_FILE] [PLUS_FILE]' >> delta_help.md
+    - echo '```' >> delta_help.md
+    - echo '## DESCRIPTION' >> delta_help.md
+    - echo '```' >> delta_help.md
+    - cat delta_help.txt >> delta_help.md
+    - echo '```' >> delta_help.md
+    - pandoc delta_help.md -s -t man -o man/man1/delta.1
   binaries:
     - target/release/delta
   man:
