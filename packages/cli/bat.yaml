@@ -19,7 +19,7 @@ install:
     - git clone --branch v0.25.0 --single-branch https://github.com/sharkdp/bat.git .
     - cargo build --release
     - mkdir -p man/man1
-    - pandoc docs/bat.1.md -s -t man -o man/man1/bat.1
+    - cp assets/manual/bat.1.in man/man1/bat.1
   binaries:
     - target/release/bat
   man:
