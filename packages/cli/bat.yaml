@@ -48,4 +48,4 @@ install:
     - filename: themes/LvimKanagawa.tmTheme
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimKanagawa.tmTheme
     - filename: themes/LvimLight.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/batLvimLight.tmTheme
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimLight.tmTheme
