@@ -19,11 +19,11 @@ install:
     - git clone --branch 0.18.2 --single-branch https://github.com/dandavison/delta.git .
     - cargo build --release
     - mkdir -p man/man1
-    - ./target/release/delta --help | man -l - > man/man1/delta.1
+    - ./target/release/delta --help > man/man1/delta.1 &>/dev/null
   binaries:
     - target/release/delta
   man:
-    - etc/delta.1
+    - man/man1/delta.1
   additional-config:
     - filename: config.sh
       content: |
