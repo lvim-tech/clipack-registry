@@ -19,7 +19,8 @@ install:
     - git clone --branch 0.18.2 --single-branch https://github.com/dandavison/delta.git .
     - cargo build --release
     - mkdir -p man/man1
-    - sh -c 'env NO_COLOR=1 ./target/release/delta --help > delta_help.txt'
+    - sh -c "env NO_COLOR=1 ./target/release/delta --help > delta_help.txt"
+    # - sh -c 'env NO_COLOR=1 ./target/release/delta --help > delta_help.txt'
     - pandoc delta_help.txt -s -t man -o man/man1/delta.1
   binaries:
     - target/release/delta
