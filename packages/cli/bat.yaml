@@ -43,7 +43,7 @@ install:
         bat cache --clear && bat cache --build
     - filename: config
       content: |
-        --theme="LvimDarker"
+        --theme="LvimDark"
         --style="numbers,changes,header"
         --italic-text=always
     - filename: themes/LvimDark.tmTheme
