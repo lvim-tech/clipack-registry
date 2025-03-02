@@ -19,8 +19,7 @@ install:
     - git clone --branch 0.18.2 --single-branch https://github.com/dandavison/delta.git .
     - cargo build --release
     - mkdir -p man/man1
-    - cp etc/completion/completion.bash .
-    - cp etc/completion/completion.zsh .
+    - ./target/release/delta --help | man -l - > man/man1/delta.1
   binaries:
     - target/release/delta
   man:
