@@ -4,6 +4,7 @@ packages:
   - packages/cli/delta.yaml
   - packages/cli/eza.yaml
   - packages/cli/fzf.yaml
+  - packages/cli/lazygit.yaml
   - packages/cli/rclone.yaml
   - packages/cli/starship.yaml
   - packages/cli/tmux.yaml
