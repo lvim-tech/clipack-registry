@@ -20,7 +20,6 @@ install:
     - cargo build --release
     - mkdir -p man/man1
     - env NO_COLOR=1 delta --help | col -b > man/man1/delta.md
-    - env NO_COLOR=1 ./target/release/delta --help 1> man/man1/delta.1 2>/dev/null
     - pandoc man/man1/delta.md -s -t man -o man/man1/delta.1
     - rm man/man1/delta.md
     # - env NO_COLOR=1 ./target/release/delta --help > man/man1/delta.1 2>/dev/null
