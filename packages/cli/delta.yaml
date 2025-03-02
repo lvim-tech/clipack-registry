@@ -38,5 +38,17 @@ install:
 
         export DELTA_CONFIG_DIR="$BASE_PATH/configs/delta"
 
-        # Update theme in git config
-        git config --global delta.features "$THEME"
+        git config --global include.path "$DELTA_CONFIG_DIR/themes/$THEME.gitconfig"
+
+        git config --global core.pager "delta"
+        git config --global interactive.diffFilter "delta --color-only"
+        git config --global merge.conflictstyle "diff3"
+        git config --global diff.colorMoved "default"
+    - filename: LvimDark.gitconfig
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDark.gitconfig
+    - filename: LvimDarker.gitconfig
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDarker.gitconfig
+    - filename: LvimKanagawa.gitconfig
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimKanagawa.gitconfig
+    - filename: LvimLight.gitconfig
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimLight.gitconfig
