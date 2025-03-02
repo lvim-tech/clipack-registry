@@ -1,0 +1,26 @@
+name: bat
+version: v0.25.0
+description: A cat(1) clone with syntax highlighting and Git integration.
+homepage: https://github.com/sharkdp/bat
+license: MIT/Apache-2.0
+maintainer: sharkdp
+updated_at: 2025-02-24T13:37:29Z
+tags:
+  - cli
+  - cat
+  - syntax-highlighting
+  - git
+install:
+  source:
+    type: git
+    url: https://github.com/sharkdp/bat.git
+    ref: main
+  steps:
+    - git clone --branch v0.25.0 --single-branch https://github.com/sharkdp/bat.git .
+    - cargo build --release
+    - mkdir -p man/man1
+    - pandoc docs/bat.1.md -s -t man -o man/man1/bat.1
+  binaries:
+    - target/release/bat
+  man:
+    - man/man1/bat.1
