@@ -36,6 +36,11 @@ install:
         fi
 
         export BAT_CONFIG_DIR="$BASE_PATH/configs/bat"
+
+        sed -i.bak "s/--theme=.*$/--theme=\"$THEME\"/" "$BAT_CONFIG_DIR/config"
+        rm -f "$BAT_CONFIG_DIR/config.bak"
+
+        bat cache --clear && bat cache --build
     - filename: config
       content: |
         --theme="LvimDarker"
