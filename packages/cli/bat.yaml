@@ -24,3 +24,15 @@ install:
     - target/release/bat
   man:
     - man/man1/bat.1
+  additional-config:
+    - filename: config.sh
+      content: |
+        #!/bin/zsh
+    - filename: config
+      content: |
+        --theme="LvimDarker"
+        --style="numbers,changes,header"
+        --italic-text=always
+    - filename: themes/LvimDark.tmTheme
+      content: |
+        --theme="LvimDarker"
