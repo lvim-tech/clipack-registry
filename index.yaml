@@ -1,6 +1,7 @@
 packages:
   - packages/cli/atuin.yaml
   - packages/cli/bat.yaml
+  - packages/cli/delta.yaml
   - packages/cli/eza.yaml
   - packages/cli/fzf.yaml
   - packages/cli/rclone.yaml
