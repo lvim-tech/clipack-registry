@@ -40,7 +40,7 @@ install:
         sed -i.bak "s/--theme=.*$/--theme=\"$THEME\"/" "$BAT_CONFIG_DIR/config"
         rm -f "$BAT_CONFIG_DIR/config.bak"
 
-        bat cache --clear && bat cache --build
+        bat cache --clear >/dev/null 2>&1 && bat cache --build >/dev/null 2>&1
     - filename: config
       content: |
         --theme="LvimDark"
