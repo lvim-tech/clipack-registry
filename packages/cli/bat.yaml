@@ -28,11 +28,24 @@ install:
     - filename: config.sh
       content: |
         #!/bin/zsh
+
+        BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+
+        if [ -z "$THEME" ]; then
+            THEME="LvimDark"
+        fi
+
+        export BAT_CONFIG_DIR="$BASE_PATH/configs/bat"
     - filename: config
       content: |
         --theme="LvimDarker"
         --style="numbers,changes,header"
         --italic-text=always
     - filename: themes/LvimDark.tmTheme
-      content: |
-        --theme="LvimDarker"
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimDark.tmTheme
+    - filename: themes/LvimDarker.tmTheme
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimDarker.tmTheme
+    - filename: themes/LvimKanagawa.tmTheme
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimKanagawa.tmTheme
+    - filename: themes/LvimLight.tmTheme
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/batLvimLight.tmTheme
