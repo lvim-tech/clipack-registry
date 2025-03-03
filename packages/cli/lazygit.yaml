@@ -31,8 +31,7 @@ install:
             THEME="LvimDark"
         fi
 
-        export LAZYGIT_CONFIG_DIR="$BASE_PATH/configs/lazygit"
-        export LAZYGIT_CONFIG_FILE="$BASE_PATH/configs/lazygit/themes/$THEME.yml"
+        ln -sf $BASE_PATH/configs/lazygit/themes/$THEME.yml ~/.config/jesseduffield/lazygit/config.yml
     - filename: themes/LvimDark.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDark.yml
     - filename: themes/LvimDarker.yml
