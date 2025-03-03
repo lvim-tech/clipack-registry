@@ -1,0 +1,25 @@
+name: yadm
+version: v3.4.0
+description: >
+  Yet Another Dotfiles Manager - a tool for managing your home directory as a Git repository.
+homepage: https://yadm.io
+license: MIT
+maintainer: TheLocehiliosan
+updated_at: 2025-03-03T06:43:39Z
+tags:
+  - cli
+  - dotfiles
+  - management
+install:
+  source:
+    type: git
+    url: https://github.com/TheLocehiliosan/yadm.git
+    ref: main
+  steps:
+    - git clone --branch 3.4.0 --single-branch https://github.com/TheLocehiliosan/yadm.git .
+    - mkdir -p man/man1
+    - cp yadm.1 man/man1/yadm.1
+  binaries:
+    - yadm
+  man:
+    - man/man1/yadm.1

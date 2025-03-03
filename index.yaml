@@ -9,5 +9,6 @@ packages:
   - packages/cli/starship.yaml
   - packages/cli/tmux.yaml
   - packages/cli/vivid.yaml
+  - packages/cli/yadm.yaml
   - packages/cli/zoxide.yaml
   - packages/file_managers/yazi.yaml
