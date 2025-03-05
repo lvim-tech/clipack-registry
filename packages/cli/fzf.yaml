@@ -84,7 +84,6 @@ install:
             --ansi
             --multi
             --sort
-            --tac
             --highlight-line \
             --header='$ICON_SEARCH $SEARCH_TITLE'
             --prompt='  Type for search $ICON_PROMPT '

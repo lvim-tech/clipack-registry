@@ -26,3 +26,9 @@ install:
     - man/man1/zoxide-init.1
     - man/man1/zoxide-query.1
     - man/man1/zoxide-remove.1
+  additional-config:
+    - filename: config.sh
+      content: |
+        #!/usr/bin/env bash
+
+        eval "$(zoxide init zsh)"
