@@ -19,5 +19,9 @@ install:
   steps:
     - git clone --branch v0.8.1 --single-branch https://github.com/muesli/duf.git .
     - go build -o bin/duf
+    - mkdir -p man/man1
+    - cp assets/manual/duf.1 man/man1/duf.1
   binaries:
-    - duf
+    - bin/duf
+  man:
+    - man/man1/duf.1
