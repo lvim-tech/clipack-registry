@@ -17,10 +17,10 @@ install:
     ref: v1.58.1
   steps:
     - git clone https://github.com/rclone/rclone.git .
-    - go build rclone
+    - go build -o bin/rclone
     - mkdir -p man/man1
     - cp rclone.1 man/man1
   binaries:
-    - rclone
+    - bin/rclone
   man:
     - man/man1/rclone.1
