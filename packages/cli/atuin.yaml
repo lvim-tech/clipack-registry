@@ -7,22 +7,22 @@ license: MIT
 maintainer: Atuin Team
 updated_at: "2025-03-01T02:50:00Z"
 tags:
-- cli
-- shell
-- history
+  - cli
+  - shell
+  - history
 install:
   source:
     type: script
     url: https://github.com/atuinsh/atuin
     ref: ""
   steps:
-  - git clone https://github.com/atuinsh/atuin.git .
-  - cargo build --release
+    - git clone https://github.com/atuinsh/atuin.git .
+    - cargo build --release
   binaries:
-  - target/release/atuin
+    - target/release/atuin
   additional-config:
-  - filename: config.sh
-    content: |
-      #!/usr/bin/env bash
+    - filename: config.sh
+      content: |
+        #!/usr/bin/env bash
 
-      eval "$(atuin init zsh)"
+        eval "$(atuin init zsh)"
