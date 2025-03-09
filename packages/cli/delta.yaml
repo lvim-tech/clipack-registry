@@ -27,7 +27,7 @@ install:
   additional-config:
     - filename: config.sh
       content: |
-        #!/bin/zsh
+        #!/usr/bin/env bash
 
         BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
 
