@@ -22,3 +22,10 @@ install:
     - go build -o bin/fx
   binaries:
     - bin/fx
+  additional-config:
+    - filename: config.sh
+      content: |
+        #!/usr/bin/env bash
+
+        export FX_SHOW_SIZE=true
+        export FX_THEME=4
