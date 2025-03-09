@@ -19,6 +19,6 @@ install:
     ref: main
   steps:
     - git clone --branch 35.0.0 --single-branch https://github.com/antonmedv/fx.git .
-    - go build -o bin/fzf
+    - go build -o bin/fx
   binaries:
     - bin/fx
