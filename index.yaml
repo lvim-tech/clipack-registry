@@ -3,6 +3,7 @@ packages:
   - packages/cli/bat.yaml
   - packages/cli/delta.yaml
   - packages/cli/eza.yaml
+  - packages/cli/fx.yaml
   - packages/cli/fzf.yaml
   - packages/cli/lazygit.yaml
   - packages/cli/rclone.yaml
