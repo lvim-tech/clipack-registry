@@ -1,5 +1,6 @@
 name: atuin
 version: v18.4.0
+commit: 4b758aaac9bad9689304388a2f7e031b00a0f058
 description: Atuin - Magical shell history
 homepage: https://github.com/atuinsh/atuin
 license: MIT
@@ -14,7 +15,7 @@ install:
     type: script
     url: https://github.com/atuinsh/atuin
   steps:
-    - git clone --branch v18.4.0 --single-branch https://github.com/atuinsh/atuin.git .
+    - git clone https://github.com/atuinsh/atuin.git .
     - cargo build --release
   binaries:
     - target/release/atuin

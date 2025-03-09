@@ -1,5 +1,6 @@
 name: starship
 version: v1.22.1
+commit: d6ed4c6192489edc4d44a2b3a06916736c5ae5d7
 description: Starship - The minimal, blazing-fast, and infinitely customizable prompt for any shell.
 homepage: https://github.com/starship/starship
 license: ISC
@@ -14,7 +15,7 @@ install:
     type: script
     url: https://github.com/starship/starship
   steps:
-    - git clone --branch v1.22.1 --single-branch https://github.com/starship/starship.git .
+    - git clone https://github.com/starship/starship.git .
     - cargo build --release
   binaries:
     - target/release/starship

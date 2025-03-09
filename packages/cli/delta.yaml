@@ -1,5 +1,6 @@
 name: delta
 version: v0.18.2
+commit: 42da5adab68c46277e20757f7a1f3b68eb874b0e
 description: A viewer for git and diff output with syntax highlighting and line numbering
 homepage: https://github.com/dandavison/delta
 license: MIT
@@ -16,7 +17,7 @@ install:
     url: https://github.com/dandavison/delta.git
     ref: main
   steps:
-    - git clone --branch 0.18.2 --single-branch https://github.com/dandavison/delta.git .
+    - git clone https://github.com/dandavison/delta.git .
     - cargo build --release
     - mkdir -p man/man1
     - env NO_COLOR=1 help2man -N -o man/man1/delta.1 ./target/release/delta

@@ -1,5 +1,6 @@
 name: lazygit
 version: v0.48.0
+commit: 19ac926116863740e63cf7dabcb46845c8d41b91
 description: A simple terminal UI for git commands
 homepage: https://github.com/jesseduffield/lazygit
 license: MIT
@@ -16,7 +17,7 @@ install:
     url: https://github.com/jesseduffield/lazygit.git
     ref: v0.48.0
   steps:
-    - git clone --depth 1 --branch v0.48.0 --single-branch https://github.com/jesseduffield/lazygit.git .
+    - git clone https://github.com/jesseduffield/lazygit.git .
     - go build -o bin/lazygit
   binaries:
     - bin/lazygit

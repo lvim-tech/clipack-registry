@@ -1,5 +1,6 @@
 name: zoxide
 version: v0.9.7
+commit: 0f07314d33f635e2fb324c08aa691a597dad2417
 description: A smarter cd command. Supports all major shells.
 homepage: https://github.com/ajeetdsouza/zoxide
 license: MIT
@@ -15,7 +16,7 @@ install:
     url: https://github.com/ajeetdsouza/zoxide.git
     ref: main
   steps:
-    - git clone --branch v0.9.7 --single-branch https://github.com/ajeetdsouza/zoxide.git .
+    - git clone https://github.com/ajeetdsouza/zoxide.git .
     - cargo build --release
   binaries:
     - target/release/zoxide

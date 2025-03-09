@@ -1,7 +1,6 @@
-Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted): 2025-03-09 04:00:56
-Current User's Login: bojanbb
 name: fx
 version: 35.0.0
+commit: b39506ff7238bbf37db5f0763364e3ac4ba7e732
 description: Terminal JSON viewer & processor
 homepage: https://github.com/antonmedv/fx
 license: MIT
@@ -18,7 +17,7 @@ install:
     url: https://github.com/antonmedv/fx.git
     ref: main
   steps:
-    - git clone --branch 35.0.0 --single-branch https://github.com/antonmedv/fx.git .
+    - git clone https://github.com/antonmedv/fx.git .
     - go build -o bin/fx
   binaries:
     - bin/fx

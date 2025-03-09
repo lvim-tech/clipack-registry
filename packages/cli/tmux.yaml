@@ -1,5 +1,6 @@
 name: tmux
-version: 3.5a
+version: tmux-3.5a
+commit: 882fb4d295deb3e4b803eb444915763305114e4f
 description: Terminal multiplexer for managing multiple terminal sessions.
 homepage: https://github.com/tmux/tmux
 license: ISC
@@ -15,7 +16,7 @@ install:
     url: https://github.com/tmux/tmux.git
     ref: master
   steps:
-    - git clone --branch tmux-3.5a --single-branch https://github.com/tmux/tmux.git .
+    - git clone https://github.com/tmux/tmux.git .
     - sh autogen.sh
     - ./configure
     - make
