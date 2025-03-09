@@ -1,54 +1,52 @@
 name: delta
-version: v0.18.2
+version: 0.18.2
 commit: 42da5adab68c46277e20757f7a1f3b68eb874b0e
 description: A viewer for git and diff output with syntax highlighting and line numbering
 homepage: https://github.com/dandavison/delta
 license: MIT
 maintainer: dandavison
-updated_at: 2025-03-02T12:50:51Z
+updated_at: "2025-03-02T12:50:51Z"
 tags:
-  - cli
-  - git
-  - diff
-  - syntax-highlighting
+- cli
+- git
+- diff
+- syntax-highlighting
 install:
   source:
     type: git
     url: https://github.com/dandavison/delta.git
     ref: main
   steps:
-    - git clone https://github.com/dandavison/delta.git .
-    - cargo build --release
-    - mkdir -p man/man1
-    - env NO_COLOR=1 help2man -N -o man/man1/delta.1 ./target/release/delta
+  - git clone https://github.com/dandavison/delta.git .
+  - cargo build --release
+  - mkdir -p man/man1
+  - env NO_COLOR=1 help2man -N -o man/man1/delta.1 ./target/release/delta
   binaries:
-    - target/release/delta
-  man:
-    - man/man1/delta.1
+  - target/release/delta
   additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+  - filename: config.sh
+    content: |
+      #!/usr/bin/env bash
 
-        BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+      BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
 
-        if [ -z "$THEME" ]; then
-            THEME="LvimDark"
-        fi
+      if [ -z "$THEME" ]; then
+          THEME="LvimDark"
+      fi
 
-        export DELTA_CONFIG_DIR="$BASE_PATH/configs/delta"
+      export DELTA_CONFIG_DIR="$BASE_PATH/configs/delta"
 
-        git config --global include.path "$DELTA_CONFIG_DIR/themes/$THEME.gitconfig"
+      git config --global include.path "$DELTA_CONFIG_DIR/themes/$THEME.gitconfig"
 
-        git config --global core.pager "delta"
-        git config --global interactive.diffFilter "delta --color-only"
-        git config --global merge.conflictstyle "diff3"
-        git config --global diff.colorMoved "default"
-    - filename: LvimDark.gitconfig
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDark.gitconfig
-    - filename: LvimDarker.gitconfig
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDarker.gitconfig
-    - filename: LvimKanagawa.gitconfig
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimKanagawa.gitconfig
-    - filename: LvimLight.gitconfig
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimLight.gitconfig
+      git config --global core.pager "delta"
+      git config --global interactive.diffFilter "delta --color-only"
+      git config --global merge.conflictstyle "diff3"
+      git config --global diff.colorMoved "default"
+  - filename: LvimDark.gitconfig
+    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDark.gitconfig
+  - filename: LvimDarker.gitconfig
+    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDarker.gitconfig
+  - filename: LvimKanagawa.gitconfig
+    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimKanagawa.gitconfig
+  - filename: LvimLight.gitconfig
+    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimLight.gitconfig

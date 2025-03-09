@@ -1,27 +1,28 @@
 name: atuin
 version: v18.4.0
-commit: 4b758aaac9bad9689304388a2f7e031b00a0f058
+commit: 1e72e982e0386dc19855c1ebd0313b233c2df448
 description: Atuin - Magical shell history
 homepage: https://github.com/atuinsh/atuin
 license: MIT
 maintainer: Atuin Team
-updated_at: 2025-03-01T02:50:00Z
+updated_at: "2025-03-01T02:50:00Z"
 tags:
-  - cli
-  - shell
-  - history
+- cli
+- shell
+- history
 install:
   source:
     type: script
     url: https://github.com/atuinsh/atuin
+    ref: ""
   steps:
-    - git clone https://github.com/atuinsh/atuin.git .
-    - cargo build --release
+  - git clone https://github.com/atuinsh/atuin.git .
+  - cargo build --release
   binaries:
-    - target/release/atuin
+  - target/release/atuin
   additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+  - filename: config.sh
+    content: |
+      #!/usr/bin/env bash
 
-        eval "$(atuin init zsh)"
+      eval "$(atuin init zsh)"
