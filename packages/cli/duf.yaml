@@ -1,0 +1,23 @@
+name: duf
+version: v0.8.1
+description: Disk Usage/Free Utility - a better 'df' alternative
+homepage: https://github.com/muesli/duf
+license: MIT
+maintainer: muesli
+updated_at: 2023-07-05T07:11:23Z
+tags:
+  - cli
+  - disk
+  - utility
+  - df
+  - storage
+install:
+  source:
+    type: git
+    url: https://github.com/muesli/duf.git
+    ref: main
+  steps:
+    - git clone --branch v0.8.1 --single-branch https://github.com/muesli/duf.git .
+    - go build -o bin/duf
+  binaries:
+    - duf

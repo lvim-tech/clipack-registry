@@ -2,6 +2,7 @@ packages:
   - packages/cli/atuin.yaml
   - packages/cli/bat.yaml
   - packages/cli/delta.yaml
+  - packages/cli/duf.yaml
   - packages/cli/eza.yaml
   - packages/cli/fx.yaml
   - packages/cli/fzf.yaml
