@@ -1,46 +1,45 @@
 name: starship
 version: v1.22.1
-commit: f5a64a1b15af18dd8d075e1d1fc42f295bf5e22f
-description: Starship - The minimal, blazing-fast, and infinitely customizable prompt
-  for any shell.
+commit: 3fac340a7b0b38d39b7a7b067ecce0b94e7aa532
+description: Starship - The minimal, blazing-fast, and infinitely customizable prompt for any shell.
 homepage: https://github.com/starship/starship
 license: ISC
 maintainer: Starship Team
-updated_at: "2025-03-10T01:08:57Z"
+updated_at: "2025-03-10T04:28:24Z"
 tags:
-- cli
-- shell
-- prompt
+    - cli
+    - shell
+    - prompt
 install:
-  source:
-    type: script
-    url: https://github.com/starship/starship
-    ref: ""
-  steps:
-  - git clone https://github.com/starship/starship.git .
-  - cargo build --release
-  binaries:
-  - target/release/starship
-  additional-config:
-  - filename: config.sh
-    content: |
-      #!/usr/bin/env bash
+    source:
+        type: script
+        url: https://github.com/starship/starship
+        ref: ""
+    steps:
+        - git clone https://github.com/starship/starship.git .
+        - cargo build --release
+    binaries:
+        - target/release/starship
+    additional-config:
+        - filename: config.sh
+          content: |
+            #!/usr/bin/env bash
 
-      BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+            BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
 
-      if [ -z "$THEME" ]; then
-          THEME="LvimDark"
-      fi
+            if [ -z "$THEME" ]; then
+                THEME="LvimDark"
+            fi
 
-      export FUNCNEST=10000000000
-      eval "$(starship init zsh)"
+            export FUNCNEST=10000000000
+            eval "$(starship init zsh)"
 
-      export STARSHIP_CONFIG="$BASE_PATH/configs/starship/$THEME.toml"
-  - filename: LvimDark.toml
-    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimDark.toml
-  - filename: LvimDarker.toml
-    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimDarker.toml
-  - filename: LvimKanagawa.toml
-    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimKanagawa.toml
-  - filename: LvimLight.toml
-    content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimLight.toml
+            export STARSHIP_CONFIG="$BASE_PATH/configs/starship/$THEME.toml"
+        - filename: LvimDark.toml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimDark.toml
+        - filename: LvimDarker.toml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimDarker.toml
+        - filename: LvimKanagawa.toml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimKanagawa.toml
+        - filename: LvimLight.toml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimLight.toml
