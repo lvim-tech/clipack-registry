@@ -65,17 +65,26 @@ install:
 
         export FZF_DEFAULT_COMMAND="$SEARCH_FILES_WITHOUT_HIDDEN"
 
-        PREVIEW_ENGINE='
-          [[ -f {1} ]] && bat --color=always --style=header,numbers {1} || echo "Not a valid file.";
-          # VAL="{2}";
-          # [ -n "$VAL" ] || exit 0;
-          #
-          # if [ -f "$VAL" ]; then
-          #     file -biz "$VAL" | grep ^text &>/dev/null && bat --color=always --decorations=never "$VAL";
-          # elif [ -d "$VAL" ]; then
-          #     eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline "$VAL" 2>/dev/null;
-          # fi
-        '
+        export FZF_PREVIEW_COLUMNS=$(($(tput cols) / 2)) # half of the terminal width
+        export FZF_PREVIEW_LINES=$(tput lines)           # full height
+        export _KITTEN_ICAT_PLACE=${FZF_PREVIEW_COLUMNS:-64}x${FZF_PREVIEW_LINES}@${FZF_PREVIEW_COLUMNS:-64}x0
+
+        export PREVIEW_ENGINE="if [[ -f {1} ]]; then
+          MIME_TYPE=\$(file -bL --mime-type {1})
+          if [[ \$MIME_TYPE == image/* ]]; then
+            kitty icat --clear --transfer-mode=memory --stdin=no --place=${_KITTEN_ICAT_PLACE} {}
+          else
+            bat --color=always --style=header,numbers {1}
+          fi
+        elif [[ -d {1} ]]; then
+          if command -v eza &>/dev/null; then
+            eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline {1}
+          else
+            ls -la --color=always {1}
+          fi
+        else
+          echo \"Not a valid file or directory.\"
+        fi"
 
         export FZF_DEFAULT_OPTS="
             $REVERSE
@@ -115,7 +124,6 @@ install:
             $SEARCH_FILES_WITHOUT_HIDDEN "$query" 2>/dev/null |
                 fzf --query="$query" \
                     --header="${ICON_SEARCH} ${SEARCH_FILES_TITLE}" \
-                    --preview='[[ -f {1} ]] && bat --color=always --style=header,numbers {1} || echo "Not a valid file."' \
                     --preview-window=right:60%:wrap:noborder \
                     --border=none \
                     --info=inline \
@@ -131,7 +139,6 @@ install:
             selected_dir="$($SEARCH_DIRECTORIES_WITHOUT_HIDDEN "$query" 2>/dev/null |
                 fzf --query="$query" \
                     --header="${ICON_SEARCH} ${SEARCH_DIRECTORIES_TITLE}" \
-                    --preview='eza --group --colour=always --icons=always --group-directories-first --classify --level 1 --oneline {1} 2>/dev/null' \
                     --preview-window=right:60%:wrap:noborder \
                     --bind "alt-h:reload($SEARCH_DIRECTORIES_WITH_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
                     --bind "alt-l:reload($SEARCH_DIRECTORIES_WITHOUT_HIDDEN) + change-preview($PREVIEW_ENGINE)" \
@@ -150,6 +157,7 @@ install:
                 fzf --delimiter=: \
                     --query="$query" \
                     --header="$ICON_SEARCH $SEARCH_IN_FILES_TITLE" \
+                    --preview-window=right:60%:wrap:noborder \
                     --bind "change:reload:${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q} || true" \
                     --bind "alt-h:reload(${SEARCH_IN_FILES_WITH_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
                     --bind "alt-l:reload(${SEARCH_IN_FILES_WITHOUT_HIDDEN[*]} -n ${list_files:+-l} {q})+change-preview([[ -f {1} ]] && bat --color=always --style=header,numbers --line-range=:500 {1} || echo 'No preview available.')" \
@@ -166,4 +174,3 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/fzf/LvimKanagawa.sh
     - filename: LvimLight.sh
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/fzf/LvimLight.sh
-
