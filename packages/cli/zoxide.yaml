@@ -1,35 +1,28 @@
 name: zoxide
 version: v0.9.7
-commit: 0f07314d33f635e2fb324c08aa691a597dad2417
+commit: 2ecb310108771302162f7775c7114ba80eaafd4b
 description: A smarter cd command. Supports all major shells.
 homepage: https://github.com/ajeetdsouza/zoxide
 license: MIT
 maintainer: ajeetdsouza
-updated_at: 2025-02-27T19:51:05Z
+updated_at: "2025-03-12T01:20:47Z"
 tags:
-  - cli
-  - cd
-  - navigation
+    - cli
+    - cd
+    - navigation
 install:
-  source:
-    type: git
-    url: https://github.com/ajeetdsouza/zoxide.git
-    ref: main
-  steps:
-    - git clone https://github.com/ajeetdsouza/zoxide.git .
-    - cargo build --release
-  binaries:
-    - target/release/zoxide
-  man:
-    - man/man1/zoxide.1
-    - man/man1/zoxide-add.1
-    - man/man1/zoxide-import.1
-    - man/man1/zoxide-init.1
-    - man/man1/zoxide-query.1
-    - man/man1/zoxide-remove.1
-  additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+    source:
+        type: git
+        url: https://github.com/ajeetdsouza/zoxide.git
+        ref: main
+    steps:
+        - git clone https://github.com/ajeetdsouza/zoxide.git .
+        - cargo build --release
+    binaries:
+        - target/release/zoxide
+    additional-config:
+        - filename: config.sh
+          content: |
+            #!/usr/bin/env bash
 
-        eval "$(zoxide init zsh)"
+            eval "$(zoxide init zsh)"

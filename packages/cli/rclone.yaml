@@ -1,26 +1,25 @@
 name: rclone
 version: v1.69.1
-commit: 177337686acce1686b860424ea04ca7a2d616950
+commit: 6a7e68aaf2d56df069eb31a46f2f6015a9429b24
 description: Rclone - "rsync for cloud storage".
 homepage: https://github.com/rclone/rclone
 license: MIT
 maintainer: Nick Craig-Wood
-updated_at: 2025-02-28T15:08:00Z
+updated_at: "2025-03-12T01:20:46Z"
 tags:
-  - cli
-  - cloud storage
-  - sync
+    - cli
+    - cloud storage
+    - sync
 install:
-  source:
-    type: git
-    url: https://github.com/rclone/rclone.git
-    ref: v1.58.1
-  steps:
-    - git clone https://github.com/rclone/rclone.git .
-    - go build -o bin/rclone
-    - mkdir -p man/man1
-    - cp rclone.1 man/man1
-  binaries:
-    - bin/rclone
-  man:
-    - man/man1/rclone.1
+    source:
+        type: git
+        url: https://github.com/rclone/rclone.git
+        ref: v1.58.1
+    steps:
+        - git clone https://github.com/rclone/rclone.git .
+        - go build -o bin/rclone
+        - mkdir -p man/man1
+        - cp rclone.1 man/man1
+    binaries:
+        - bin/rclone
+    additional-config: []
