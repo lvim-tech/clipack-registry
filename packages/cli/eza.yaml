@@ -1,27 +1,27 @@
 name: eza
-version: v0.20.23
-commit: 6ff233abbcb8af390c6356791c34a8676d3e4caa
+version: v0.20.24
+commit: 3ad8132f874f66945eca3511491afa85c5f43ebe
 description: A modern replacement for ls.
 homepage: https://github.com/eza-community/eza
 license: MIT
 maintainer: eza-community
-updated_at: "2025-02-24T13:37:29Z"
+updated_at: "2025-03-14T01:20:46Z"
 tags:
-  - cli
-  - ls
-  - modern
+    - cli
+    - ls
+    - modern
 install:
-  source:
-    type: git
-    url: https://github.com/eza-community/eza.git
-    ref: main
-  steps:
-    - git clone https://github.com/eza-community/eza.git .
-    - cargo build --release
-    - mkdir -p man/man1 man/man5
-    - pandoc man/eza.1.md -s -t man -o man/man1/eza.1
-    - pandoc man/eza_colors-explanation.5.md -s -t man -o man/man5/eza_colors-explanation.5
-    - pandoc man/eza_colors.5.md -s -t man -o man/man5/eza_colors.5
-  binaries:
-    - target/release/eza
-  additional-config: []
+    source:
+        type: git
+        url: https://github.com/eza-community/eza.git
+        ref: main
+    steps:
+        - git clone https://github.com/eza-community/eza.git .
+        - cargo build --release
+        - mkdir -p man/man1 man/man5
+        - pandoc man/eza.1.md -s -t man -o man/man1/eza.1
+        - pandoc man/eza_colors-explanation.5.md -s -t man -o man/man5/eza_colors-explanation.5
+        - pandoc man/eza_colors.5.md -s -t man -o man/man5/eza_colors.5
+    binaries:
+        - target/release/eza
+    additional-config: []
