@@ -1,11 +1,11 @@
 name: starship
 version: v1.22.1
-commit: 634d05d8b3f2f92d1fef1dd3bfc20b30c0567d86
+commit: 6f0942fc9b3dca1137be8063f64fc1e9e34424fa
 description: Starship - The minimal, blazing-fast, and infinitely customizable prompt for any shell.
 homepage: https://github.com/starship/starship
 license: ISC
 maintainer: Starship Team
-updated_at: "2025-03-20T01:21:34Z"
+updated_at: "2025-03-21T01:23:24Z"
 tags:
     - cli
     - shell
