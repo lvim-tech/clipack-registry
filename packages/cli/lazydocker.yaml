@@ -17,10 +17,10 @@ install:
     url: https://github.com/jesseduffield/lazydocker.git
     ref: v0.24.1
   steps:
-    - git clone https://github.com/jesseduffield/lazygit.git .
-    - go build -o bin/lazygit
+    - git clone https://github.com/jesseduffield/lazydocker.git .
+    - go build -o bin/lazydocker
   binaries:
-    - bin/lazygit
+    - bin/lazydocker
   additional-config:
     - filename: config.sh
       content: |
