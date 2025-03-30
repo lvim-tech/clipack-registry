@@ -1,0 +1,43 @@
+name: lazydocker
+version: v0.24.1
+commit: bedde4a03791e678c510b98d0de8b0c2d23d8efa
+description: A simple terminal UI for git commands
+homepage: https://github.com/jesseduffield/lazydocker
+license: MIT
+maintainer: jesseduffield
+updated_at: "2025-03-27T01:23:02Z"
+tags:
+  - cli
+  - git
+  - tui
+  - terminal
+install:
+  source:
+    type: git
+    url: https://github.com/jesseduffield/lazydocker.git
+    ref: v0.24.1
+  steps:
+    - git clone https://github.com/jesseduffield/lazygit.git .
+    - go build -o bin/lazygit
+  binaries:
+    - bin/lazygit
+  additional-config:
+    - filename: config.sh
+      content: |
+        #!/usr/bin/env bash
+
+        BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+
+        if [ -z "$THEME" ]; then
+            THEME="LvimDark"
+        fi
+
+        ln -sf $BASE_PATH/configs/lazydocker/themes/$THEME.yml ~/.config/jesseduffield/lazydocker/config.yml
+    - filename: themes/LvimDark.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDark.yml
+    - filename: themes/LvimDarker.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDarker.yml
+    - filename: themes/LvimKanagawa.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimKanagawa.yml
+    - filename: themes/LvimLight.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimLight.yml
