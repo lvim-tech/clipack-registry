@@ -27,45 +27,6 @@ install:
   additional-config:
     - filename: config.sh
       content: |
-        #!/usr/bin/env bash
-
-        BASE_PATH=$(grep 'base:' "$HOME/.config/clipack/config.yaml" | sed 's/.*base: //')
-
-        if [ -z "$THEME" ]; then
-            THEME="LvimDark"
-        fi
-
-        export TMUX_CONF="$BASE_PATH/configs/tmux/tmux.conf"
-
-        TARGET="$HOME/.tmux.conf"
-
-        if [ -L "$TARGET" ]; then
-            CURRENT_LINK=$(readlink "$TARGET")
-            if [ "$CURRENT_LINK" != "$TMUX_CONF" ]; then
-                rm "$TARGET"
-                ln -s "$TMUX_CONF" "$TARGET"
-            fi
-        elif [ -e "$TARGET" ]; then
-            rm -rf "$TARGET"
-            ln -s "$TMUX_CONF" "$TARGET"
-        else
-            ln -s "$TMUX_CONF" "$TARGET"
-        fi
-
-        alias tm="tmux attach -t SYSTEM || tmux new -s SYSTEM"
-        alias ta="tmux a -t SYSTEM"
-        alias tn="tmux new-session"
-
-        if [ -n "$TMUX" ]; then
-            if [ -f "$BASE_PATH/configs/tmux/$THEME.conf" ]; then
-                tmux source-file "$BASE_PATH/configs/tmux/$THEME.conf"
-            fi
-            if [ -f "$TMUX_CONF" ]; then
-                tmux source-file "$TMUX_CONF"
-            fi
-        fi
-    - filename: tmux.conf
-      content: |
         # ==========================
         # ===  General settings  ===
         # ==========================
@@ -87,6 +48,7 @@ install:
         set -sa terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'
         set -g set-titles on
         set -g set-titles-string "#I:#W"
+        set -g window-status-separator ""
         set -g base-index 1
         setw -g pane-base-index 1
         set -g mouse on
@@ -267,6 +229,7 @@ install:
         set -g @plugin 'wfxr/tmux-fzf-url'
         set -g @plugin 'sturob/tmux-teleport'
         set -g @plugin 'vndmp4/tmux-fzf-session-switch'
+        set -g @plugin 'alexwforsythe/tmux-which-key'
         set -g @fzf-goto-preview-enabled 'true'
 
         # Run all plugins' scripts
