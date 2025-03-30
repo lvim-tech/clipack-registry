@@ -34,10 +34,10 @@ install:
 
         ln -sf $BASE_PATH/configs/lazydocker/themes/$THEME.yml ~/.config/jesseduffield/lazydocker/config.yml
     - filename: themes/LvimDark.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDark.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimDark.yml
     - filename: themes/LvimDarker.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDarker.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimDarker.yml
     - filename: themes/LvimKanagawa.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimKanagawa.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimKanagawa.yml
     - filename: themes/LvimLight.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimLight.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimLight.yml
