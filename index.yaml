@@ -6,6 +6,7 @@ packages:
   - packages/cli/eza.yaml
   - packages/cli/fx.yaml
   - packages/cli/fzf.yaml
+  - packages/cli/lazydocker.yaml
   - packages/cli/lazygit.yaml
   - packages/cli/rclone.yaml
   - packages/cli/starship.yaml
