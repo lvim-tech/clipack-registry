@@ -1,11 +1,11 @@
 name: yadm
 version: 3.5.0
-commit: 4214de8d91746ca7f7690ebe1fd500c365b3d1b7
+commit: bbb58e6625de5d934fd49b4b81c1981e137e3057
 description: Yet Another Dotfiles Manager - a tool for managing your home directory as a Git repository.
 homepage: https://github.com/yadm-dev/yadm
 license: MIT
 maintainer: TheLocehiliosan
-updated_at: "2025-03-19T01:22:44Z"
+updated_at: "2025-04-02T01:25:00Z"
 tags:
     - cli
     - dotfiles
