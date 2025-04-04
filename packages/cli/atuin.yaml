@@ -1,11 +1,11 @@
 name: atuin
 version: v18.4.0
-commit: da672d5bc321b2d1dddb796e9aa21d85658d9434
+commit: 9d816d16db233dd1aa477bfe1cc5a960e3c7b6c7
 description: Atuin - Magical shell history
 homepage: https://github.com/atuinsh/atuin
 license: MIT
 maintainer: Atuin Team
-updated_at: "2025-04-03T01:23:32Z"
+updated_at: "2025-04-04T01:23:34Z"
 tags:
     - cli
     - shell
