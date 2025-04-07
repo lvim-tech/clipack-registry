@@ -64,7 +64,7 @@ install:
                 tmux source-file "$TMUX_CONF"
             fi
         fi
-    - filename: config.sh
+    - filename: tmux.conf
       content: |
         # ==========================
         # ===  General settings  ===
