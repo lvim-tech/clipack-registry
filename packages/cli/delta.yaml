@@ -48,7 +48,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimDarker.gitconfig
     - filename: themes/LvimKanagawa.gitconfig
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimKanagawa.gitconfig
-    - filename: themes/LvimGrivbox.gitconfig
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimGrivbox.gitconfig
+    - filename: themes/LvimGruvbox.gitconfig
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimGruvbox.gitconfig
     - filename: themes/LvimLight.gitconfig
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimLight.gitconfig
