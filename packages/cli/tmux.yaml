@@ -279,5 +279,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/tmux/LvimDarker.conf
     - filename: LvimKanagawa.conf
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/tmux/LvimKanagawa.conf
+    - filename: LvimGruvbox.conf
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/tmux/LvimGruvbox.conf
     - filename: LvimLight.conf
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/tmux/LvimLight.conf

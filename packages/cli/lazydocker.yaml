@@ -39,5 +39,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimDarker.yml
     - filename: themes/LvimKanagawa.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimKanagawa.yml
+    - filename: themes/LvimGruvbox.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimGruvbox.yml
     - filename: themes/LvimLight.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazydocker/LvimLight.yml

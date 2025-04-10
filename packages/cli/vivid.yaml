@@ -39,5 +39,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimDarker.yml
     - filename: LvimKanagawa.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimKanagawa.yml
+    - filename: LvimGruvbox.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimGruvbox.yml
     - filename: LvimLight.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimLight.yml
