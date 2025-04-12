@@ -41,5 +41,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimKanagawa.yml
     - filename: themes/LvimGruvbox.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimGruvbox.yml
+    - filename: themes/LvimEverforest.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimEverforest.yml
     - filename: themes/LvimLight.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimLight.yml

@@ -53,6 +53,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimKanagawa.tmTheme
     - filename: themes/LvimGruvbox.tmTheme
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimGruvbox.tmTheme
+    - filename: themes/LvimEverforest.tmTheme
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimEverforest.tmTheme
     - filename: themes/LvimLight.tmTheme
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimLight.tmTheme
-

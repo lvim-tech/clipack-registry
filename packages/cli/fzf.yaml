@@ -179,6 +179,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/fzf/LvimKanagawa.sh
     - filename: LvimGruvbox.sh
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/fzf/LvimGruvbox.sh
+    - filename: LvimEverforest.sh
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/fzf/LvimEverforest.sh
     - filename: LvimLight.sh
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/fzf/LvimLight.sh
-

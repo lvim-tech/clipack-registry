@@ -50,5 +50,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimKanagawa.gitconfig
     - filename: themes/LvimGruvbox.gitconfig
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimGruvbox.gitconfig
+    - filename: themes/LvimEverforest.gitconfig
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimEverforest.gitconfig
     - filename: themes/LvimLight.gitconfig
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/delta/LvimLight.gitconfig

@@ -43,5 +43,7 @@ install:
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimKanagawa.toml
     - filename: LvimGruvbox.toml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimGruvbox.toml
+    - filename: LvimEverforest.toml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimEverforest.toml
     - filename: LvimLight.toml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/starship/LvimLight.toml
