@@ -22,3 +22,6 @@ install:
     - go build -o bin/gowall
   binaries:
     - bin/gowall
+  additional-config:
+    - filename: config.yml
+      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/gowall/config.yml
