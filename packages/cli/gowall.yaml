@@ -23,5 +23,12 @@ install:
   binaries:
     - bin/gowall
   additional-config:
+    - filename: config.sh
+      content: |
+        #!/usr/bin/env bash
+
+        BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
+
+        export GOWALL_CONFIG_PATH=$BASE_PATH/configs/gowall
     - filename: config.yml
       content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/gowall/config.yml
