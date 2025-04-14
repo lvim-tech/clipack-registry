@@ -1,47 +1,47 @@
 name: lazygit
 version: v0.48.0
-commit: facc73a88b72a0739563017e6d6e7bf0a41f3366
+commit: d68c116387f1b141e51283133e19579f00a1766f
 description: A simple terminal UI for git commands
 homepage: https://github.com/jesseduffield/lazygit
 license: MIT
 maintainer: jesseduffield
-updated_at: "2025-04-03T01:23:34Z"
+updated_at: "2025-04-14T01:27:37Z"
 tags:
-  - cli
-  - git
-  - tui
-  - terminal
+    - cli
+    - git
+    - tui
+    - terminal
 install:
-  source:
-    type: git
-    url: https://github.com/jesseduffield/lazygit.git
-    ref: v0.48.0
-  steps:
-    - git clone https://github.com/jesseduffield/lazygit.git .
-    - go build -o bin/lazygit
-  binaries:
-    - bin/lazygit
-  additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+    source:
+        type: git
+        url: https://github.com/jesseduffield/lazygit.git
+        ref: v0.48.0
+    steps:
+        - git clone https://github.com/jesseduffield/lazygit.git .
+        - go build -o bin/lazygit
+    binaries:
+        - bin/lazygit
+    additional-config:
+        - filename: config.sh
+          content: |
+            #!/usr/bin/env bash
 
-        BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+            BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
 
-        if [ -z "$THEME" ]; then
-            THEME="LvimDark"
-        fi
+            if [ -z "$THEME" ]; then
+                THEME="LvimDark"
+            fi
 
-        ln -sf $BASE_PATH/configs/lazygit/themes/$THEME.yml ~/.config/jesseduffield/lazygit/config.yml
-    - filename: themes/LvimDark.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDark.yml
-    - filename: themes/LvimDarker.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDarker.yml
-    - filename: themes/LvimKanagawa.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimKanagawa.yml
-    - filename: themes/LvimGruvbox.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimGruvbox.yml
-    - filename: themes/LvimEverforest.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimEverforest.yml
-    - filename: themes/LvimLight.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimLight.yml
+            ln -sf $BASE_PATH/configs/lazygit/themes/$THEME.yml ~/.config/jesseduffield/lazygit/config.yml
+        - filename: themes/LvimDark.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDark.yml
+        - filename: themes/LvimDarker.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimDarker.yml
+        - filename: themes/LvimKanagawa.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimKanagawa.yml
+        - filename: themes/LvimGruvbox.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimGruvbox.yml
+        - filename: themes/LvimEverforest.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimEverforest.yml
+        - filename: themes/LvimLight.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/lazygit/LvimLight.yml

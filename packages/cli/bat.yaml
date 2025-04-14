@@ -1,59 +1,59 @@
 name: bat
 version: v0.25.0
-commit: 57629bcaca9b90b98d952e82632a852f0c01196c
+commit: ba49ba0acd2ecb6e1ea7aa5da3e02638ce54f1d1
 description: A cat(1) clone with syntax highlighting and Git integration.
 homepage: https://github.com/sharkdp/bat
 license: MIT/Apache-2.0
 maintainer: sharkdp
-updated_at: "2025-04-06T01:35:53Z"
+updated_at: "2025-04-14T01:27:36Z"
 tags:
-  - cli
-  - cat
-  - syntax-highlighting
-  - git
+    - cli
+    - cat
+    - syntax-highlighting
+    - git
 install:
-  source:
-    type: git
-    url: https://github.com/sharkdp/bat.git
-    ref: main
-  steps:
-    - git clone https://github.com/sharkdp/bat.git .
-    - cargo build --release
-    - mkdir -p man/man1
-    - cp assets/manual/bat.1.in man/man1/bat.1
-  binaries:
-    - target/release/bat
-  additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+    source:
+        type: git
+        url: https://github.com/sharkdp/bat.git
+        ref: main
+    steps:
+        - git clone https://github.com/sharkdp/bat.git .
+        - cargo build --release
+        - mkdir -p man/man1
+        - cp assets/manual/bat.1.in man/man1/bat.1
+    binaries:
+        - target/release/bat
+    additional-config:
+        - filename: config.sh
+          content: |
+            #!/usr/bin/env bash
 
-        BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
+            BASE_PATH=$(grep 'base:' "$HOME"/.config/clipack/config.yaml | sed 's/.*base: //')
 
-        if [ -z "$THEME" ]; then
-            THEME="LvimDark"
-        fi
+            if [ -z "$THEME" ]; then
+                THEME="LvimDark"
+            fi
 
-        export BAT_CONFIG_DIR="$BASE_PATH/configs/bat"
+            export BAT_CONFIG_DIR="$BASE_PATH/configs/bat"
 
-        sed -i.bak "s/--theme=.*$/--theme=\"$THEME\"/" "$BAT_CONFIG_DIR/config"
-        rm -f "$BAT_CONFIG_DIR/config.bak"
+            sed -i.bak "s/--theme=.*$/--theme=\"$THEME\"/" "$BAT_CONFIG_DIR/config"
+            rm -f "$BAT_CONFIG_DIR/config.bak"
 
-        bat cache --clear >/dev/null 2>&1 && bat cache --build >/dev/null 2>&1
-    - filename: config
-      content: |
-        --theme="LvimDark"
-        --style="numbers,changes,header"
-        --italic-text=always
-    - filename: themes/LvimDark.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimDark.tmTheme
-    - filename: themes/LvimDarker.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimDarker.tmTheme
-    - filename: themes/LvimKanagawa.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimKanagawa.tmTheme
-    - filename: themes/LvimGruvbox.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimGruvbox.tmTheme
-    - filename: themes/LvimEverforest.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimEverforest.tmTheme
-    - filename: themes/LvimLight.tmTheme
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimLight.tmTheme
+            bat cache --clear >/dev/null 2>&1 && bat cache --build >/dev/null 2>&1
+        - filename: config
+          content: |
+            --theme="LvimDark"
+            --style="numbers,changes,header"
+            --italic-text=always
+        - filename: themes/LvimDark.tmTheme
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimDark.tmTheme
+        - filename: themes/LvimDarker.tmTheme
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimDarker.tmTheme
+        - filename: themes/LvimKanagawa.tmTheme
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimKanagawa.tmTheme
+        - filename: themes/LvimGruvbox.tmTheme
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimGruvbox.tmTheme
+        - filename: themes/LvimEverforest.tmTheme
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimEverforest.tmTheme
+        - filename: themes/LvimLight.tmTheme
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/bat/LvimLight.tmTheme
