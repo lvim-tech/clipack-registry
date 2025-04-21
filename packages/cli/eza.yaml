@@ -1,11 +1,11 @@
 name: eza
 version: v0.21.1
-commit: 62a4609e8a67d3047cb6eab4bcd2df565d740a14
+commit: 7db3c7b2f5e0b69c8accde05b16ce57b8af0332e
 description: A modern replacement for ls.
 homepage: https://github.com/eza-community/eza
 license: MIT
 maintainer: eza-community
-updated_at: "2025-04-20T01:38:42Z"
+updated_at: "2025-04-21T01:37:53Z"
 tags:
     - cli
     - ls
