@@ -1,30 +1,30 @@
 name: fx
 version: 35.0.0
-commit: b39506ff7238bbf37db5f0763364e3ac4ba7e732
+commit: 370f285a3e6aac4a7db23922e7a6b45b7350f16e
 description: Terminal JSON viewer & processor
 homepage: https://github.com/antonmedv/fx
 license: MIT
 maintainer: antonmedv
-updated_at: 2024-03-01T15:42:23Z
+updated_at: "2025-04-28T01:37:25Z"
 tags:
-  - cli
-  - json
-  - terminal
-  - viewer
+    - cli
+    - json
+    - terminal
+    - viewer
 install:
-  source:
-    type: git
-    url: https://github.com/antonmedv/fx.git
-    ref: main
-  steps:
-    - git clone https://github.com/antonmedv/fx.git .
-    - go build -o bin/fx
-  binaries:
-    - bin/fx
-  additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+    source:
+        type: git
+        url: https://github.com/antonmedv/fx.git
+        ref: main
+    steps:
+        - git clone https://github.com/antonmedv/fx.git .
+        - go build -o bin/fx
+    binaries:
+        - bin/fx
+    additional-config:
+        - filename: config.sh
+          content: |
+            #!/usr/bin/env bash
 
-        export FX_SHOW_SIZE=true
-        export FX_THEME=3
+            export FX_SHOW_SIZE=true
+            export FX_THEME=3
