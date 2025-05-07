@@ -1,11 +1,11 @@
 name: gowall
 version: v0.2.1
-commit: b0b86d3762f9c91528379b83d139dda2d4945c1c
+commit: a39c075a4e3afd0bfb6e46b57072657484271731
 description: Gowall is a tool to convert an image ( specifically a wallpaper ) to any color-scheme / pallete you like!
 homepage: https://github.com/Achno/gowall
 license: MIT
 maintainer: Achno
-updated_at: "2025-04-25T01:27:03Z"
+updated_at: "2025-05-07T01:37:09Z"
 tags:
     - cli
     - disk
