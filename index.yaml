@@ -10,6 +10,7 @@ packages:
   - packages/cli/lazydocker.yaml
   - packages/cli/lazygit.yaml
   - packages/cli/rclone.yaml
+  - packages/cli/snipt.yaml
   - packages/cli/starship.yaml
   - packages/cli/tmux.yaml
   - packages/cli/vivid.yaml
