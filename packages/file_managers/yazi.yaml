@@ -1,11 +1,11 @@
 name: yazi
 version: v25.5.31
-commit: d5038eeed52a459fa43b953c3b42a65a1b0d922c
+commit: 20446544ef13f530792179804356ef2d28f403da
 description: A blazing fast terminal file manager written in Rust.
 homepage: https://github.com/sxyazi/yazi
 license: MIT
 maintainer: sxyazi
-updated_at: "2025-06-02T00:01:43Z"
+updated_at: "2025-06-04T00:02:03Z"
 tags:
     - cli
     - file manager
