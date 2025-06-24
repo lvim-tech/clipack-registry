@@ -1,11 +1,11 @@
 name: fzf
 version: v0.62.0
-commit: 3a21116307d31a35d499776ed8604cc2818f4378
+commit: 330a85c25c7e15d0913720530cb63d18d4bfe8ac
 description: A command-line fuzzy finder
 homepage: https://github.com/junegunn/fzf
 license: MIT
 maintainer: junegunn
-updated_at: "2025-06-22T00:01:53Z"
+updated_at: "2025-06-24T00:01:44Z"
 tags:
     - cli
     - search
