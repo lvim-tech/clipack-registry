@@ -1,11 +1,11 @@
 name: tmux
 version: 3.5a
-commit: 30e4f119d3952ea124b62a779132b6914baba842
+commit: 7e439539377e272f37d18bb10dbff374b87acee6
 description: Terminal multiplexer for managing multiple terminal sessions.
 homepage: https://github.com/tmux/tmux
 license: ISC
 maintainer: tmux-community
-updated_at: "2025-07-02T00:01:53Z"
+updated_at: "2025-07-03T00:02:04Z"
 tags:
     - cli
     - terminal
