@@ -1,11 +1,11 @@
 name: lazygit
 version: v0.52.0
-commit: 91d8c25183fde8e0d9ae51b8a24acb545b9cb278
+commit: bc4b50f817a0b82393a872f96b04a77f769ae929
 description: A simple terminal UI for git commands
 homepage: https://github.com/jesseduffield/lazygit
 license: MIT
 maintainer: jesseduffield
-updated_at: "2025-07-03T00:02:03Z"
+updated_at: "2025-07-05T00:01:47Z"
 tags:
     - cli
     - git
