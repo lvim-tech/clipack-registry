@@ -1,11 +1,11 @@
 name: delta
 version: 0.18.2
-commit: cb610ec4c9cce5e82729f28e44f61197ab4c7132
+commit: ed09269ebace8aad765c57a2821502ebb8c11f11
 description: A viewer for git and diff output with syntax highlighting and line numbering
 homepage: https://github.com/dandavison/delta
 license: MIT
 maintainer: dandavison
-updated_at: "2025-05-03T01:25:27Z"
+updated_at: "2025-07-06T00:01:59Z"
 tags:
     - cli
     - git
