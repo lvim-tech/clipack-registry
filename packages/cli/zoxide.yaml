@@ -1,11 +1,11 @@
 name: zoxide
 version: v0.9.8
-commit: 6324b4e347a45ba7e07ec2584d11e133fad3bd84
+commit: 30129f434433added8f3bc6ea4590904055d27e3
 description: A smarter cd command. Supports all major shells.
 homepage: https://github.com/ajeetdsouza/zoxide
 license: MIT
 maintainer: ajeetdsouza
-updated_at: "2025-06-18T00:01:49Z"
+updated_at: "2025-08-08T00:20:09Z"
 tags:
     - cli
     - cd
