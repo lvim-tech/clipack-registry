@@ -1,11 +1,11 @@
 name: bat
 version: v0.25.0
-commit: d9ac757b6ab1e4996971c1ee95bae61ae64d050c
+commit: 982409065493fe65139f7e46239df2bcc55c58df
 description: A cat(1) clone with syntax highlighting and Git integration.
 homepage: https://github.com/sharkdp/bat
 license: MIT/Apache-2.0
 maintainer: sharkdp
-updated_at: "2025-08-15T00:19:39Z"
+updated_at: "2025-08-17T00:20:23Z"
 tags:
     - cli
     - cat
