@@ -1,11 +1,11 @@
 name: rclone
 version: v1.70.3
-commit: dd3fff6eaeb280e81eac9dc3a03e5c890554feb2
+commit: f61d79396df6775057c1ee3afc324e27b5313733
 description: Rclone - "rsync for cloud storage".
 homepage: https://github.com/rclone/rclone
 license: MIT
 maintainer: Nick Craig-Wood
-updated_at: "2025-08-21T00:16:49Z"
+updated_at: "2025-08-22T00:17:46Z"
 tags:
     - cli
     - cloud storage
