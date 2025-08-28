@@ -1,11 +1,11 @@
 name: duf
 version: v0.8.1
-commit: 43b365e66ccf51d9c677f13954dd8285b9cde4d0
+commit: 344535e79228c27ca5d8a68c453af5c68947525b
 description: Disk Usage/Free Utility - a better 'df' alternative
 homepage: https://github.com/muesli/duf
 license: MIT
 maintainer: muesli
-updated_at: "2025-08-27T00:18:05Z"
+updated_at: "2025-08-28T00:17:44Z"
 tags:
     - cli
     - disk
