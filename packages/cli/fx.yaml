@@ -1,11 +1,11 @@
 name: fx
-version: 35.0.0
-commit: 7af5a388b52e1136eac0e56a08e6b86a029379f8
+version: 39.0.4
+commit: 929d72016d53263847a46421daa35329b9e6d812
 description: Terminal JSON viewer & processor
 homepage: https://github.com/antonmedv/fx
 license: MIT
 maintainer: antonmedv
-updated_at: "2025-05-09T01:36:41Z"
+updated_at: "2025-09-06T08:36:28Z"
 tags:
     - cli
     - json

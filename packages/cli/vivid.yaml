@@ -1,47 +1,47 @@
 name: vivid
 version: v0.10.1
-commit: 782907221045fbcd4df62b2061f92fcaf6b637aa
+commit: 3dddb073f28156b3d24e6d8b73533e4c8f1deed2
 description: A themeable LS_COLORS generator with a rich filetype database.
 homepage: https://github.com/sharkdp/vivid
 license: MIT
 maintainer: sharkdp
-updated_at: 2025-02-24T13:45:00Z
+updated_at: "2025-09-06T08:36:32Z"
 tags:
-  - cli
-  - ls
-  - colors
-  - themes
+    - cli
+    - ls
+    - colors
+    - themes
 install:
-  source:
-    type: git
-    url: https://github.com/sharkdp/vivid.git
-    ref: main
-  steps:
-    - git clone https://github.com/sharkdp/vivid.git .
-    - cargo build --release
-  binaries:
-    - target/release/vivid
-  additional-config:
-    - filename: config.sh
-      content: |
-        #!/usr/bin/env bash
+    source:
+        type: git
+        url: https://github.com/sharkdp/vivid.git
+        ref: main
+    steps:
+        - git clone https://github.com/sharkdp/vivid.git .
+        - cargo build --release
+    binaries:
+        - target/release/vivid
+    additional-config:
+        - filename: config.sh
+          content: |
+            #!/usr/bin/env bash
 
-        BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
+            BASE_PATH=$(grep 'base:' $HOME/.config/clipack/config.yaml | sed 's/.*base: //')
 
-        if [ -z "$THEME" ]; then
-            THEME="LvimDark"
-        fi
+            if [ -z "$THEME" ]; then
+                THEME="LvimDark"
+            fi
 
-        export LS_COLORS="$($BASE_PATH/bin/vivid generate $BASE_PATH/configs/vivid/$THEME.yml)"
-    - filename: LvimDark.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimDark.yml
-    - filename: LvimDarker.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimDarker.yml
-    - filename: LvimKanagawa.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimKanagawa.yml
-    - filename: LvimGruvbox.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimGruvbox.yml
-    - filename: LvimEverforest.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimEverforest.yml
-    - filename: LvimLight.yml
-      content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimLight.yml
+            export LS_COLORS="$($BASE_PATH/bin/vivid generate $BASE_PATH/configs/vivid/$THEME.yml)"
+        - filename: LvimDark.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimDark.yml
+        - filename: LvimDarker.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimDarker.yml
+        - filename: LvimKanagawa.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimKanagawa.yml
+        - filename: LvimGruvbox.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimGruvbox.yml
+        - filename: LvimEverforest.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimEverforest.yml
+        - filename: LvimLight.yml
+          content: https://github.com/lvim-tech/lvim-colorscheme/blob/main/extras/vivid/LvimLight.yml
