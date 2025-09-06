@@ -1,0 +1,23 @@
+name: sshs
+version: 4.7.2
+commit: 6545755a40014188a7d5f17f4044ea7ad444d923
+description: A modern SSH client with extended functionalities.
+homepage: https://github.com/quantumsheep/sshs
+license: MIT
+maintainer: quantum-sheep
+updated_at: "2025-05-03T01:25:27Z"
+tags:
+  - cli
+  - ssh-management
+  - utilities
+install:
+  source:
+    type: git
+    url: https://github.com/quantumsheep/sshs.git
+    ref: main
+  steps:
+    - git clone https://github.com/quantumsheep/sshs.git .
+    - cargo build --release
+  binaries:
+    - target/release/sshs
+  additional-config: []

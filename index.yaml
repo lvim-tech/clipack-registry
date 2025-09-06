@@ -11,6 +11,7 @@ packages:
   - packages/cli/lazygit.yaml
   - packages/cli/rclone.yaml
   - packages/cli/snipt.yaml
+  - packages/cli/sshs.yaml
   - packages/cli/starship.yaml
   - packages/cli/tmux.yaml
   - packages/cli/vivid.yaml
