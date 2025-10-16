@@ -1,6 +1,7 @@
 packages:
   - packages/cli/atuin.yaml
   - packages/cli/bat.yaml
+  - packages/cli/cronboard.yaml
   - packages/cli/delta.yaml
   - packages/cli/duf.yaml
   - packages/cli/eza.yaml
