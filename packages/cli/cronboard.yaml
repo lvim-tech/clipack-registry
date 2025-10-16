@@ -19,6 +19,6 @@ install:
     ref: main
   steps:
     - git clone https://github.com/antoniorodr/Cronboard.git .
-    - pip install bin/cronboard
+    - pip install .
   binaries:
-    - bin/cronboard
+    - cronboard
